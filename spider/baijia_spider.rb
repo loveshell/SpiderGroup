@@ -33,9 +33,13 @@ class BaijiaSpider < BaseSpider
         @logger.fatal(self.class.to_s) {" get_content_url_list error "+@url}
       else
         data["data"]["list"].each {|n|
-          cover = download_img(n["m_image_url"], @url) if @options[:image] && n["m_image_url"]
+          cover = n["m_image_url"]
+          if @options[:image] && n["m_image_url"]
+            cover = download_img(n["m_image_url"], @url)
+            @logger.debug "download image from #{n["m_image_url"]}"
+          end
           content_list << {:source=>@name, :title=>n["m_title"], :url=>n["m_display_url"],
-                           :description=>n["m_summary"], :cover=>n["m_image_url"],
+                           :description=>n["m_summary"], :cover=>cover,
                            :created_at=>n["m_create_time"]}
         }
 
@@ -53,10 +57,16 @@ class BaijiaSpider < BaseSpider
     html = load_info u[:url]
     if !html[:error]
       doc = Nokogiri::HTML(html[:utf8html])
-      content = doc.css("div.article-detail")[0].inner_html
+      cdiv = doc.css("div.article-detail")[0]
+      content = cdiv.inner_html
       author = doc.css("div.article-author-time a")[0].text
 
       u[:content] = replace_by_type(@replaces, content)
+
+      #提取所有图片
+      img_list = receive_imgs(cdiv, u[:url])
+      u[:content] = replace_by_type(img_list, u[:content])
+
       u[:author] = author
     else
       @logger.fatal(self.class.to_s) {" get_content_info error "+u[:url]}
@@ -88,7 +98,7 @@ class BaijiaSpider < BaseSpider
 end
 
 if __FILE__==$0
-  BaijiaSpider.new( ).fetch {|u|
-    ap u
+  BaijiaSpider.new(options: {:page=>1, :image=>1}).fetch {|u|
+    #ap u
   }
 end

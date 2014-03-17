@@ -1,4 +1,6 @@
+#!/usr/bin/env ruby
 require 'optparse'
+require 'yaml'
 
 #将当前根目录作为库加载目录
 $:.unshift(File.expand_path(File.dirname(__FILE__))).unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))

@@ -30,20 +30,22 @@ module ReplaceParser
   def replace_by_type(replace_list, rawstr)
     str = rawstr.dup()
     replace_list.each{|r|
-      case r[:type]
-        when "replace_to_end"
-          str[str.index(r[:from])..str.size-1]  = r[:to] if str.index(r[:from])
-        when "replace_to_position"
-          str[0..str.index(r[:from])-1] = r[:to] if str.index(r[:from])
-        when "string_replace"
-          while str.index(r[:from])
-            str[r[:from]] = r[:to]
-            break unless r[:repead]
-          end
+      if r[:from] and r[:from].size>0
+        case r[:type]
+          when "replace_to_end"
+            str[str.index(r[:from])..str.size-1]  = r[:to] if str.index(r[:from])
+          when "replace_to_position"
+            str[0..str.index(r[:from])-1] = r[:to] if str.index(r[:from])
+          when "string_replace"
+            while str.index(r[:from])
+              str[r[:from]] = r[:to]
+              break unless r[:repead]
+            end
 
-        when "replace_between"
-          str.gsub!(/#{Regexp.escape(r[:from])}(.*?)#{Regexp.escape(r[:from1])}/m, r[:to])
-        else
+          when "replace_between"
+            str.gsub!(/#{Regexp.escape(r[:from])}(.*?)#{Regexp.escape(r[:from1])}/m, r[:to])
+          else
+        end
       end
     }
 

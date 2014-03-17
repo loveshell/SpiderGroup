@@ -53,9 +53,15 @@ class FreebufSpider < BaseSpider
     html = load_info u[:url]
     if !html[:error]
       doc = Nokogiri::HTML(html[:utf8html])
-      content = doc.css("div.news_text")[0].inner_html
+      cdiv = doc.css("div.news_text")[0]
+      content = cdiv.inner_html
 
       u[:content] = replace_by_type(@replaces, content)
+
+      #提取所有图片
+      img_list = receive_imgs(cdiv, u[:url])
+      u[:content] = replace_by_type(img_list, u[:content])
+
     else
       @logger.fatal(self.class.to_s) {" get_content_info error "+u[:url]}
     end
@@ -86,7 +92,7 @@ class FreebufSpider < BaseSpider
 end
 
 if __FILE__==$0
-  FreebufSpider.new(:logger => Logger.new('freebuf.log') ).fetch {|u|
+  FreebufSpider.new(options: {:page=>1, :image=>1} ).fetch {|u|
     #ap u
   }
 end

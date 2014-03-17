@@ -13,7 +13,7 @@ module HttpModule
 
     begin
       url = 'http://'+url+'/' if !url.include?('http://') and !url.include?('https://')
-      url = URI.encode(url)
+      url = URI.encode(url) unless url.include? '%' #如果包含百分号%，说明已经编码过了
       uri = URI(url)
       ip = uri.host
       ip = options[:hostip] if options && options[:hostip]
@@ -163,7 +163,8 @@ module HttpModule
   end
 
   def download_img(img_src, refer)
-    u = URI.join(refer, URI.encode(img_src))
+    img_src = URI.encode(img_src) unless img_src.include? '%' #如果包含百分号%，说明已经编码过了
+    u = URI.join(refer, img_src)
     abs_img_url = u.to_s
     path = File.join(File.dirname(__FILE__), 'imgs')
     FileUtils.mkdir_p path
@@ -178,5 +179,24 @@ module HttpModule
       end
     end
     Pathname.new(path).relative_path_from(Pathname.new(File.dirname(__FILE__))).to_s
+  end
+
+  #分析html(Nokogiri的node类型)中得所有img标签，下载图片到本地，然后返回替换的数组
+  def receive_imgs(html,referer)
+    imgs = []
+    html.css('img').each {|img|
+      img_src = img['src']
+      local_file = download_img(img_src, referer)
+
+
+      if img['data-original']
+        img_src = img['data-original']
+        local_file = download_img(img_src, referer)
+        imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
+      end
+
+      imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true}
+    }
+    imgs
   end
 end
