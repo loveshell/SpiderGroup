@@ -13,7 +13,6 @@ class BaseSpider
 
     @logger = args[0][0][:logger] if args && args[0] && args[0][0] && args[0][0][:logger]
     @options = args[0][0][:options] if args && args[0] && args[0][0] && args[0][0][:options]
-    @options ||= {page:1}
   end
 
 end

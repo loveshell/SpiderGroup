@@ -126,7 +126,7 @@ module HttpModule
 
 
   def load_info(url)
-    @options ||= {'Version'=>false}
+    @options ||= {}
     http_info = nil
     url = 'http://'+url+'/' if !url.include?('http://') and !url.include?('https://')
     uri = nil
@@ -138,16 +138,16 @@ module HttpModule
     path = File.join(File.dirname(__FILE__), 'results', Digest::MD5.hexdigest(url)+'.tobj')
 
     #先看文件是否存且时间小于1天
-    if File.exists?(path) && !@options['NoCache']
+    if File.exists?(path) && !@options[:no_cache]
       http_info = load_obj_from_file path
 
-      if @options and @options['Version']
-        puts url
-        puts path
+      if @logger
+        @logger.debug url
+        @logger.debug path
       end
 
       #2小时更新一次
-      if Time.parse(http_info[:time])+2*60*60 < Time.now
+      if Time.parse(http_info[:time]) + @options[:cachetime].to_i < Time.now
         http_info = nil
       end
     end

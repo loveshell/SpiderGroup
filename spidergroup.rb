@@ -13,7 +13,19 @@ class OptsConsole
   # Return a hash describing the options.
   #
   def self.parse(args)
-    options = { :page=>1,:image=>0 }
+    options = { :page=>1,:image=>0, :cachetime=>7200 }
+
+    #加载默认配置
+    cfg_file = File.expand_path(File.join(File.dirname(__FILE__), 'config.yml'))
+    if File.exist? cfg_file
+      cfg = YAML.load_file(cfg_file)
+      cfg.each{|k,v|
+        options[k.to_sym] = v
+      }
+      #options.each{|k,v|
+      #  puts k,v
+      #}
+    end
 
     opts_ = OptionParser.new do |opts|
       opts.banner = "Spider Group By LubyRuffy"

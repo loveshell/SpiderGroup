@@ -58,9 +58,11 @@ class FreebufSpider < BaseSpider
 
       u[:content] = replace_by_type(@replaces, content)
 
-      #提取所有图片
-      img_list = receive_imgs(cdiv, u[:url])
-      u[:content] = replace_by_type(img_list, u[:content])
+      if @options[:image]
+        #提取所有图片
+        img_list = receive_imgs(cdiv, u[:url])
+        u[:content] = replace_by_type(img_list, u[:content])
+      end
 
     else
       @logger.fatal(self.class.to_s) {" get_content_info error "+u[:url]}

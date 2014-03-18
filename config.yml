@@ -2,7 +2,10 @@
 page: 1
 
 #是否自动下载图片并替换图片的src
-image: 1
+image: true
 
 #页面的缓存时间，默认为2个小时=7200秒
 cachetime: 7200
+
+#禁止缓存
+no_cache: false
