@@ -9,7 +9,7 @@ end
 require 'awesome_print'
 require 'base_spider'
 
-class IHeimaSpider < BaseSpider
+class IheimaSpider < BaseSpider
 
   def initialize(*args)
     super(args)
@@ -103,7 +103,7 @@ class IHeimaSpider < BaseSpider
 end
 
 if __FILE__==$0
-  IHeimaSpider.new(options: {:page=>1, :image=>1} ).fetch {|u|
+  IheimaSpider.new(options: {:page=>1, :image=>1} ).fetch {|u|
     ap u
   }
 end
