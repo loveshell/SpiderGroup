@@ -6,6 +6,6 @@ namespace :sg do
 
   desc "start spider with image download"
   task :s do
-    puts %x{ruby spidergroup.rb -i 1 all}
+    puts %x{ruby spidergroup.rb all}
   end
 end

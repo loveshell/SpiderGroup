@@ -60,7 +60,7 @@
       <file leaf-file-name="httpmodule.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/httpmodule.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="194" column="104" selection-start="6117" selection-end="6117" vertical-scroll-proportion="0.42906573" vertical-offset="2786" max-vertical-offset="3120">
+            <state line="138" column="0" selection-start="4513" selection-end="4513" vertical-scroll-proportion="0.26333332" vertical-offset="1991" max-vertical-offset="3120">
               <folding />
             </state>
           </provider>
@@ -435,7 +435,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2003231" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39455783" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37585035" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282313" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -697,7 +697,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/httpmodule.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="104" selection-start="6117" selection-end="6117" vertical-scroll-proportion="0.42906573" vertical-offset="2786" max-vertical-offset="3120">
+        <state line="138" column="0" selection-start="4513" selection-end="4513" vertical-scroll-proportion="0.26333332" vertical-offset="1991" max-vertical-offset="3120">
           <folding />
         </state>
       </provider>

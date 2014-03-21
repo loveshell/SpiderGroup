@@ -1,5 +1,5 @@
 #获取的页面数
-page: 1
+page: 2
 
 #是否自动下载图片并替换图片的src
 image: true

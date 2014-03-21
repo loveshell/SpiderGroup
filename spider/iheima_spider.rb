@@ -58,7 +58,8 @@ class IheimaSpider < BaseSpider
     if !html[:error]
       doc = Nokogiri::HTML(html[:utf8html])
       u[:author] = doc.css("span.fl span")[2].text.strip!
-      u[:author]['来源：'] = ''
+      u[:author]['来源：'] = '' if u[:author].include? "来源："
+      u[:author]['投稿者：'] = '' if u[:author].include? "投稿者："
 
       cdiv = doc.css("div.txs_Content")[0]
       content = cdiv.inner_html

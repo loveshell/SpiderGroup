@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'net/http'
 require 'uri'
 require 'open-uri'
@@ -185,12 +187,19 @@ module HttpModule
   def receive_imgs(html,referer)
     imgs = []
     html.css('img').each {|img|
+      #ap img
       img_src = img['src']
-      local_file = download_img(img_src, referer)
+      local_file = download_img(img_src, referer) if img_src
 
 
       if img['data-original']
         img_src = img['data-original']
+        local_file = download_img(img_src, referer)
+        imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
+      end
+
+      if img['data-src']
+        img_src = img['data-src']
         local_file = download_img(img_src, referer)
         imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
       end
