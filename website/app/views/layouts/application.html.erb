@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="header" alog-group="log-header">
+  <div class="header-content">
+    <div id="menu"><a href="/">首页</a></div>
+    <div id="usrbar"><a href="http://news.360.cn">360</a>|<a href="http://www.360.cn">360</a></div>
+    <div class="top-main"><h1 class="title"><a href="/">LubyRuffy的天上人间</a></h1></div>
+  </div>  
+</div>
+
+<div class="clearfix" id="body">
+  <div class="l-main-col">
+<%= yield %>
+  </div>
+  <div class="l-right-col">
+  </div>
+</div>
+
+<div id="footer" alog-group="log-footer">
+  <p class="site-info">
+  <a href="https://github.com/LubyRuffy">github.com/LubyRuffy</a><br />
+  <a href="https://twitter.com/LubyRuffy">twitter.com/LubyRuffy</a><br />
+  </p>
+</div>
+</body>
+</html>
