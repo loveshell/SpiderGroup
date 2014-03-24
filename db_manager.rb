@@ -2,8 +2,9 @@ require 'active_record'
 
 class DBManager
   attr_accessor :sqlite3_dbfile
-  def initialize
-    @sqlite3_dbfile ||= "content.s3db"
+  def initialize(options)
+    @sqlite3_dbfile = "content.s3db"
+    @sqlite3_dbfile = options[:dbfile]
     need_create = !File.exist?(@sqlite3_dbfile)
     ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database  => @sqlite3_dbfile)
 

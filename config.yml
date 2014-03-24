@@ -9,3 +9,6 @@ cachetime: 7200
 
 #禁止缓存
 no_cache: false
+
+#数据库存储文件路径
+dbfile: ./website/db/content.s3db

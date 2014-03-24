@@ -74,6 +74,7 @@ end
 @options = OptsConsole.parse(ARGV)
 @logger ||= Logger.new(STDOUT)
 #@logger = Logger.new('operation.log')
+DBManager.new(@options)
 
 def exec_spider(f)
   if File.exists? (f)
@@ -101,7 +102,6 @@ def exec_spider(f)
   end
 end
 
-DBManager.new
 ARGV.each do |f|
   case f
     when 'all'
