@@ -9,15 +9,15 @@ end
 require 'awesome_print'
 require 'base_spider'
 
-class FreebufSpider < BaseSpider
+class LusongsongSpider < BaseSpider
 
   def initialize(*args)
     super(args)
-    @name = "Freebuf"
-    @category = "安全"
-    @list_url = "http://www.freebuf.com/page/%i" #http://www.freebuf.com/page/2
+    @name = "lusongsong"
+    @category = "站长 创业"
+    @list_url = ["http://lusongsong.com/default_%i.html","http://lusongsong.com"]
     @url = ''
-    @replaces = [{:type=>'replace_to_end', :from=>'如文中未特别声明转载请注明出自', :to=>''}]
+    @replaces = [{:type=>'replace_between', :from=>'<center>', :to=>'', :from1=>'</center>'}]
   end
 
   #获取文章列表
@@ -29,17 +29,21 @@ class FreebufSpider < BaseSpider
     if !html[:error]
       doc = Nokogiri::HTML(html[:utf8html])
       #ap doc
-      doc.css("div.news_inner").each do |div|
-        link = div.css("dt a")[0]
-        cover = div.css("div.newspic01 img")[0]['src']
-        cover = download_img(cover, @url) if @options[:image] && cover
-        desc = div.css("dd.text")[0]
-        author = div.css("dd")[1].css("a")[1]
-        time = div.css("dd")[1].children.select { |t|
-          "Nokogiri::XML::Text" == t.class.to_s && t.text.include?("共")
-        }[0].text;
-        time["共"] = ''
-        content_list << {:source=>@name, :title=>link.text, :url=>link['href'], :description=>desc.text, :cover=>cover, :author=>author.text, :created_at=>time.strip!}
+      doc.css("div.topic-content").each do |div|
+        link = div.css("div.post-title-list h2 a")[0]
+        if link
+          #暂时没有图片
+          #if div.css("div.fl img").size>0
+          #  cover = div.css("div.fl img")[0]['src']
+          #  cover = download_img(cover, @url) if @options[:image] && cover
+          #end
+          cover = nil
+          desc = div.css("div.post-list-info p")[0]
+          #time = div.css("div.post-date small")[0].text;
+          content = {:source=>@name, :title=>link.text, :url=>link['href'], :description=>desc.text, :cover=>cover}
+          content_list << content
+          #ap content
+        end
       end
       #ap html[:utf8html]
     else
@@ -55,8 +59,19 @@ class FreebufSpider < BaseSpider
     html = load_info u[:url]
     if !html[:error]
       doc = Nokogiri::HTML(html[:utf8html])
-      cdiv = doc.css("div.news_text")[0]
+      u[:author] = '卢松松'
+
+      time_info = doc.css("div.post-title h6")[0].text
+      time_arr = time_info.split('  ')
+      time = time_arr[0]
+      time.gsub!(/[年月]/, '-')
+      time.gsub!(/日/, '')
+      u[:created_at] = time
+
+      cdiv = doc.css("dd.post-info")[0]
       content = cdiv.inner_html
+
+      #ap content
 
       u[:content] = replace_by_type(@replaces, content)
 
@@ -79,13 +94,13 @@ class FreebufSpider < BaseSpider
     added = true
     page = 1
     while added && page <= @options[:page]
-      @url = @list_url % page
+      @url = get_content_list_url(page)
       added = false
       self.get_content_url_list.each {|u|
         added = true
         self.get_content_info(u)
         if block_given?
-            yield u
+          yield u
         end
         sleep 0.5
       }
@@ -96,7 +111,7 @@ class FreebufSpider < BaseSpider
 end
 
 if __FILE__==$0
-  FreebufSpider.new(options: {:page=>1, :image=>1} ).fetch {|u|
-    #ap u
+  LusongsongSpider.new(options: {:page=>1, :image=>1} ).fetch {|u|
+    ap u
   }
 end
