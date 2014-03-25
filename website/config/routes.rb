@@ -12,10 +12,10 @@ Website::Application.routes.draw do
   get 'code' => 'content#code'
   get 'cool' => 'content#cool'
   get 'webmaster' => 'content#webmaster'
-  
+
   get 'Freebuf' => 'content#Freebuf'
-  
   get 'iheima' => 'content#iheima'
+  get 'lusongsong' => 'content#lusongsong'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -107,6 +107,10 @@ public
   	render_source params[:action] 
   end
 
+  def lusongsong
+  	render_source params[:action] 
+  end
+
   def view
   	@content = Content.find(params[:id])
   end
