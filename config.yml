@@ -12,3 +12,6 @@ no_cache: false
 
 #数据库存储文件路径
 dbfile: ./website/db/content.s3db
+
+#图片文件存储路径
+img_save_path: ./website/public/imgs

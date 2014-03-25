@@ -165,13 +165,16 @@ module HttpModule
   end
 
   def download_img(img_src, refer)
+    @options ||= {}
     img_src = URI.encode(img_src) unless img_src.include? '%' #如果包含百分号%，说明已经编码过了
     u = URI.join(refer, img_src)
     abs_img_url = u.to_s
     path = File.join(File.dirname(__FILE__), 'imgs')
+    path = File.join(File.dirname(__FILE__), '../'+@options[:img_save_path]) if @options[:img_save_path]
     FileUtils.mkdir_p path
-    path = File.join(path, Digest::MD5.hexdigest(abs_img_url))
-    path += File.extname(u.path) if File.extname(u.path)
+    filename = Digest::MD5.hexdigest(abs_img_url)
+    filename += File.extname(u.path) if File.extname(u.path)
+    path = File.join(path, filename)
     if !File.exists? path
       http = get_web_content img_src, referer: refer
       unless http[:error]
@@ -180,7 +183,8 @@ module HttpModule
         end
       end
     end
-    Pathname.new(path).relative_path_from(Pathname.new(File.dirname(__FILE__))).to_s
+    #Pathname.new(path).relative_path_from(Pathname.new(File.dirname(__FILE__)+'/../website/public')).to_s
+    'imgs/'+filename
   end
 
   #分析html(Nokogiri的node类型)中得所有img标签，下载图片到本地，然后返回替换的数组
