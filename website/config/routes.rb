@@ -11,7 +11,10 @@ Website::Application.routes.draw do
   get 'security' => 'content#security'
   get 'code' => 'content#code'
   get 'cool' => 'content#cool'
+  get 'webmaster' => 'content#webmaster'
+  
   get 'Freebuf' => 'content#Freebuf'
+  
   get 'iheima' => 'content#iheima'
 
   # Example of regular route:
