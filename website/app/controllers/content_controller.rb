@@ -5,10 +5,10 @@ $tags = {
 "people" => %w|王小川 周鸿祎 俞敏洪 柳传志 陈年 刘强东 马云 朱骏 孙正义 李彦宏 姚劲波 傅盛 雷军 张朝阳|,
 "security" => %w|黑客 漏洞 攻击 DDoS WAF 防火墙 渗透测试 freebuf keenteam ASLR nmap 安全扫描 安全协议 网络战 入侵 木马 后门 反射攻击 安全工程师 XSS 安全事件 网络劫持 安全问题 破解 APT 斯诺登 NSE Nmap 网络安全 网站安全 Security 病毒 安全 篡改 侵入 网络犯罪 网络间谍 黑阔 Shellcode 恶意软件代码 身份欺诈 盗刷 恶意软件|,
 "relax" => %w|姚晨 谢娜 李代沫|,
-"startup" => %w|创始人 创业 融资 大姨吗 无印良品|,
+"startup" => %w|创始人 创业 融资 大姨吗 无印良品 电商|,
 "code" => %w|编程 编码 程序员 极客 云计算 大数据 可穿戴 智能电视 智能家居 智能硬件|,
 "cool" => %w|创意 创造力 非常酷 太有才 泡妞 Oculus|,
-"webmaster" => %w|建站 站长 SEO 网站加速 网站安全 网赚 wordpress dedecms 电商|,
+"webmaster" => %w|建站 站长 SEO 网站加速 网站安全 网赚 wordpress dedecms|,
 }
 class ContentController < ApplicationController
 
@@ -98,7 +98,7 @@ public
   	#puts all_array
   	render_tag all_array,false  
   end
-
+#################source#####################
   def Freebuf
   	render_source params[:action] 
   end
@@ -108,6 +108,10 @@ public
   end
 
   def lusongsong
+  	render_source params[:action] 
+  end
+
+  def vaikan
   	render_source params[:action] 
   end
 

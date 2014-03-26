@@ -15,6 +15,7 @@ Website::Application.routes.draw do
 
   get 'Freebuf' => 'content#Freebuf'
   get 'iheima' => 'content#iheima'
+  get 'vaikan' => 'content#vaikan'
   get 'lusongsong' => 'content#lusongsong'
 
   # Example of regular route:

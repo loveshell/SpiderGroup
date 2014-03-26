@@ -25,3 +25,8 @@ SpiderGroup 站群抓取服务
 * 基本信息包括：标题，url，正文，作者，发布时间，概要，封面图片
 * 可以提取异步加载的图片（比如制定data-original，data-src等)
 * 一小时内不再抓取
+
+###### 运行：
+1. 新建cron任务，crontab -e加入执行，建议每30分钟执行一次daemon.sh
+  如果不需要定期执行，也可以手动执行./spidergroup all
+2. cd website && unicorn_rails 运行看效果

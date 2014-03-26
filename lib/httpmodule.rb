@@ -193,6 +193,7 @@ module HttpModule
     html.css('img').each {|img|
       #ap img
       img_src = img['src']
+      local_file = nil
       local_file = download_img(img_src, referer) if img_src
 
 
@@ -208,7 +209,7 @@ module HttpModule
         imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
       end
 
-      imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true}
+      imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} if local_file
     }
     imgs
   end
