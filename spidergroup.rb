@@ -73,6 +73,7 @@ end
 
 @options = OptsConsole.parse(ARGV)
 @logger ||= Logger.new(STDOUT)
+@logger.level = Logger::ERROR
 #@logger = Logger.new('operation.log')
 DBManager.new(@options)
 

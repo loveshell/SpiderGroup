@@ -5,7 +5,10 @@ page: 2
 image: true
 
 #页面的缓存时间，默认为2个小时=7200秒
-cachetime: 7200
+#cachetime: 7200
+
+#页面的缓存时间，默认为30分钟个小时=30*60秒=1800秒
+cachetime: 1800
 
 #禁止缓存
 no_cache: false

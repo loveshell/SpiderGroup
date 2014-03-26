@@ -176,8 +176,10 @@ module HttpModule
     filename += File.extname(u.path) if File.extname(u.path)
     path = File.join(path, filename)
     if !File.exists? path
-      http = get_web_content img_src, referer: refer
-      unless http[:error]
+      http = get_web_content abs_img_url, referer: refer
+      if http[:error]
+        @logger.error "download img error of #{abs_img_url} from #{refer}" if @logger
+      else
         File.open(path, "wb") do |f|
           f.write(http[:html])
         end
@@ -209,6 +211,10 @@ module HttpModule
         imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
       end
 
+      #if local_file
+        #a = {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true}
+        #puts a
+      #end
       imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} if local_file
     }
     imgs
