@@ -14,7 +14,7 @@ class VaikanSpider < BaseSpider
 
   def initialize(*args)
     super(args)
-    @name = "viakan"
+    @name = "vaikan"
     @category = "自媒体,互联网"
     @list_url = ["http://www.vaikan.com/page/%i/", "http://www.vaikan.com"]
     @url = ''
@@ -38,7 +38,7 @@ class VaikanSpider < BaseSpider
           cover = download_img(cover, @url) if @options[:image] && cover
         end
         desc = div.css("div.entry-content")[0]
-        author = "viakan"
+        author = "vaikan"
         time = div.css("span.entry-date")[0].text
         #ap time
         time.gsub!(/[年月]/, '-')
