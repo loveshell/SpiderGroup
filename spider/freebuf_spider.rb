@@ -79,7 +79,7 @@ class FreebufSpider < BaseSpider
     added = true
     page = 1
     while added && page <= @options[:page]
-      @url = @list_url % page
+      @url = get_content_list_url(page)
       added = false
       self.get_content_url_list.each {|u|
         added = true

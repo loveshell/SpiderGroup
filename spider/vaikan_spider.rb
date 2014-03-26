@@ -8,16 +8,17 @@ end
 
 require 'awesome_print'
 require 'base_spider'
+require 'json'
 
-class IheimaSpider < BaseSpider
+class VaikanSpider < BaseSpider
 
   def initialize(*args)
     super(args)
-    @name = "iheima"
-    @category = "互联网 创业"
-    @list_url = ["http://new.iheima.com/%i.html","http://new.iheima.com/"]
+    @name = "viakan"
+    @category = "自媒体,互联网"
+    @list_url = ["http://www.vaikan.com/page/%i/", "http://www.vaikan.com"]
     @url = ''
-    @replaces = [{:type=>'replace_to_end', :from=>'如文中未特别声明转载请注明出自', :to=>''}]
+    @replaces = []
   end
 
   #获取文章列表
@@ -29,20 +30,20 @@ class IheimaSpider < BaseSpider
     if !html[:error]
       doc = Nokogiri::HTML(html[:utf8html])
       #ap doc
-      doc.css("div.txs_cont").each do |div|
-        link = div.css("h3 a")[0]
-        if link
-          cover = nil
-          if div.css("div.fl img").size>0
-            cover = div.css("div.fl img")[0]['src']
-            cover = download_img(cover, @url) if @options[:image] && cover
-          end
-          desc = div.css("p.txs_Contfr")[0]
-          time = div.css("span.fl span")[0].text;
-          content = {:source=>@name, :title=>link.text, :url=>link['href'], :description=>desc.text, :cover=>cover, :created_at=>time}
-          content_list << content
-          #ap content
+      doc.css("div#col1 div.status-publish").each do |div|
+        link = div.css("h2 a")[0]
+        cover = nil
+        if div.css("div.entry-thumbnail img").size>0
+          cover = div.css("div.entry-thumbnail img")[0]['src']
+          cover = download_img(cover, @url) if @options[:image] && cover
         end
+        desc = div.css("div.entry-content")[0]
+        author = "viakan"
+        time = div.css("span.entry-date")[0].text
+        #ap time
+        time.gsub!(/[年月]/, '-')
+        time.gsub!(/日/, '')
+        content_list << {:source=>@name, :title=>link.text, :url=>link['href'], :description=>desc.text, :cover=>cover, :author=>author, :created_at=>time}
       end
       #ap html[:utf8html]
     else
@@ -58,14 +59,8 @@ class IheimaSpider < BaseSpider
     html = load_info u[:url]
     if !html[:error]
       doc = Nokogiri::HTML(html[:utf8html])
-      u[:author] = doc.css("span.fl span")[2].text.strip!
-      u[:author]['来源：'] = '' if u[:author].include? "来源："
-      u[:author]['投稿者：'] = '' if u[:author].include? "投稿者："
-
-      cdiv = doc.css("div.txs_Content")[0]
+      cdiv = doc.css("div.entry-content")[0]
       content = cdiv.inner_html
-
-      #ap content
 
       u[:content] = replace_by_type(@replaces, content)
 
@@ -94,7 +89,7 @@ class IheimaSpider < BaseSpider
         added = true
         self.get_content_info(u)
         if block_given?
-          yield u
+            yield u
         end
         sleep 0.5
       }
@@ -105,7 +100,7 @@ class IheimaSpider < BaseSpider
 end
 
 if __FILE__==$0
-  IheimaSpider.new(options: {:page=>1, :image=>1} ).fetch {|u|
+  VaikanSpider.new(options: {:page=>2, :image=>1}).fetch {|u|
     ap u
   }
 end
