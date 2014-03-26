@@ -4,6 +4,7 @@ Website::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'content#index'
+  get 'all' => 'content#all'
   get 'view/:id' => 'content#view'
   get 'bigbrother' => 'content#bigbrother'
   get 'newbie' => 'content#newbie'
@@ -17,6 +18,8 @@ Website::Application.routes.draw do
   get 'iheima' => 'content#iheima'
   get 'vaikan' => 'content#vaikan'
   get 'lusongsong' => 'content#lusongsong'
+
+  get 'vote' => 'content#vote'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

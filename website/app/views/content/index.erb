@@ -16,7 +16,8 @@
                     <% c.cat.each {|category| %>
                     <a href="/<%=category%>"><%=category%></a>
                     <% } %>
-                    
+                 </p>   
+                 <p class="feeds-item-info"><a href="/vote?content_id=<%=c.id%>&vote=2">太酷了</a> <a href="/vote?content_id=<%=c.id%>&vote=1">有点意思</a> <a href="/vote?content_id=<%=c.id%>&vote=-1">很无聊</a></p>
              </div>
            </div>
       <% } %>

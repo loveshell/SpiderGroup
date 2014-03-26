@@ -54,7 +54,7 @@ private
 			sql = @tag_array.map{|x| "title not like '%#{x}%' and description not like '%#{x}%'"}.join(' and ')
 		end
 
-  		@contents = get_contents(sql)
+  		@contents = get_contents(ip, sql)
   		render(:action => 'index')    
 	end
 
@@ -64,6 +64,14 @@ private
 	end
 	
 public
+
+  def all
+  	day = Time.now.strftime("%Y-%m-%d 00:00:00")
+  	puts day
+  	@contents = get_contents("created_at>='#{day}' and id not in (SELECT content_id from ipvotes where ip='#{request.remote_ip}')")
+  	render(:action => 'index')    
+  end
+
   def index
   	@contents = get_contents()
   end
@@ -113,6 +121,19 @@ public
 
   def vaikan
   	render_source params[:action] 
+  end
+#################
+  def vote
+  	ip = request.remote_ip
+  	if !Ipvote.where(ip: ip, content_id: params[:content_id]).exists?
+  		Ipvote.create({ip: ip, content_id: params[:content_id], vote: params[:vote], created_at: Time.now })
+  	end
+
+  	if request.referer
+  		redirect_to request.referer
+  	else
+	  redirect_to :action => 'index'
+	end
   end
 
   def view
