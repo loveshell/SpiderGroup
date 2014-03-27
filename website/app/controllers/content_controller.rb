@@ -97,6 +97,8 @@ public
     }
     @hot_word = @hot_word.sort_by{|k,v| v}.reverse
 
+    @voted = Content.find_by_sql("select ip, count(content_id) as cnt from ipvotes where created_at>='#{day}' group by ip order by cnt desc")
+
   	render(:action => 'index')    
   end
 
