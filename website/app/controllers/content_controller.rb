@@ -77,7 +77,7 @@ public
   	day = Time.now.strftime("%Y-%m-%d 00:00:00")
   	puts day
   	@contents = get_contents("created_at>='#{day}' and id not in (SELECT content_id from ipvotes where ip='#{request.remote_ip}')")
-  	@hot_artical = Content.find_by_sql("select * from contents join (select content_id as id, sum(vote) as vote from ipvotes where created_at>='#{day}' group by content_id ORDER BY vote desc limit 10) t on contents.id=t.id where vote>0")
+  	@hot_artical = Content.find_by_sql("select * from contents join (select content_id as id, sum(vote) as vote from ipvotes where created_at>='#{day}' group by content_id ORDER BY vote desc limit 5) t on contents.id=t.id where vote>0")
   	@vote = true
 
     words = Content.find_by_sql("select title,description from contents where created_at>='#{day}'")
