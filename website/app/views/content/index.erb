@@ -78,9 +78,15 @@
       
       <div class="hd"><h3>今日最热关键词<span>TAG</span></h3></div>
       <div class="bd">        
-        <% @hot_word.each {|w| %>
-          <a href="/word?w=<%=w%>" target="_blank"><%=w%></a>
-        <% } %>
+        <%
+          size = 0 
+          @hot_word.each {|k,v| 
+            size+=1
+            if v>0 && size<=10
+        %>
+          <a href="/word?w=<%=k%>" target="_blank"><%=k%></a>
+        <% end 
+      } %>
       </div>
   </div>
   <% end %>
