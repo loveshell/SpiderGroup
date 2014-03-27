@@ -3,7 +3,11 @@
 
 
     <div id="home">
-      <% @contents.each {|c|%>
+      <% if @vote && @contents.size<1 %>
+      你全部审核完了，绝对是个好员工！赶紧找领导加薪。
+      <%
+      end
+        @contents.each {|c|%>
           <div class="feeds-item">
           <h3><a href="/view/<%=c.id%>" target="_blank" class="feeds-item-more"><%=c.title%></a></h3>
           <div class="feeds-item-detail clearfix ">
@@ -23,7 +27,7 @@
                     <a href="/vote?content_id=<%=c.id%>&vote=2"><i class="grade-s  s5 "></i>太酷了</a> 
                     <a href="/vote?content_id=<%=c.id%>&vote=1"><i class="grade-s  s3 "></i>有点意思</a> 
                     <a href="/vote?content_id=<%=c.id%>&vote=-1"><i class="grade-s  s1 "></i>很无聊</a>
-                </p>
+                 </p>
                 <% end %>
              </div>
            </div>
@@ -46,12 +50,12 @@
           <% @hot_artical.each { |c| %>
             <li class="first-item clearfix" style="padding-top:13px;padding-bottom:10px;">
                 <span>
-                    <a href="" target="_blank">
+                    <a href="/view/<%=c.id%>" target="_blank">
                         <img src="<%=c.cover%>" style="height: 78px; width: 120px;">
                     </a>
                 </span>
                 <p style="margin-left:132px;">
-                    <a href="" style="font-weight:normal;letter-spacing: 0.2px;color:#333;"><%=c.title%></a>
+                    <a href="/view/<%=c.id%>" style="font-weight:normal;letter-spacing: 0.2px;color:#333;"><%=c.title%></a>
                 </p>
                 <p style="width:126px;margin-left:132px;">
                     <span style="color: #bbb;font-style: normal;font-size: 12px;width: auto;">总分(<%=c.vote%>)</span>
