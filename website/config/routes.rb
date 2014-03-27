@@ -20,6 +20,7 @@ Website::Application.routes.draw do
   get 'lusongsong' => 'content#lusongsong'
 
   get 'vote' => 'content#vote'
+  get 'word' => 'content#word'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

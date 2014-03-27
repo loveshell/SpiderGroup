@@ -847,3 +847,25 @@ h3 {
     background-position: 0 -180px
 }
 
+#tags .bd {
+    padding-top: 6px
+}
+
+#tags .bd a:link, #tags .bd a:visited {
+    color: #fff;
+    float: left;
+    font-size: 14px;
+    white-space: nowrap;
+    padding: 5px 10px;
+    margin: 10px 10px 0 0;
+    display: inline;
+    border-radius: 3px;
+    background: #3886c2;
+    box-shadow: 0 1px 1px 0 #ccc
+}
+
+#tags .bd a:hover {
+    background: #68a6d6;
+    text-decoration: none
+}
+
