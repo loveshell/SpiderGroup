@@ -81,8 +81,9 @@
         <%
           size = 0 
           @hot_word.each {|k,v| 
-            size+=1
-            if v>0 && size<=10
+            
+            if v>0 && size<=10 && k!="互联网"
+              size+=1
         %>
           <a href="/word?w=<%=k%>" target="_blank"><%=k%></a>
         <% end 

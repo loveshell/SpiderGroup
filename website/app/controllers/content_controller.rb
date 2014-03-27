@@ -95,7 +95,7 @@ public
         @hot_word[v] = countSubstrings(str, v)
       }
     }
-    @hot_word.sort_by{|k,v| v}.reverse
+    @hot_word = @hot_word.sort_by{|k,v| v}.reverse
 
   	render(:action => 'index')    
   end
