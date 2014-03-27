@@ -630,3 +630,220 @@ h3 {
 .pages-nav li.active {color:#39f}
 
 
+.mod {
+    border: 0;
+    margin-bottom: 30px
+}
+
+.mod .hd {
+    height: 28px;
+    padding: 0;
+    border-bottom: 1px solid #ccc
+}
+
+.mod .hd .more {
+    display: inline-block;
+    height: 20px;
+    color: #999;
+    line-height: 20px;
+    font-size: 12px;
+    font-family: tahoma;
+    vertical-align: top
+}
+
+.mod .hd h3 {
+    padding-left: 10px;
+    border-left: 3px solid #369;
+    color: #333;
+    height: 20px;
+    font: 18px/19px "微软雅黑"
+}
+
+.mod .hd h3 span {
+    color: #ccc;
+    font: italic 16px/18px Palatino Linotype, simsun;
+    padding-left: 10px;
+    letter-spacing: 1px
+}
+
+.mod .hd h3 a:link, .mod .hd h3 a:visited, .mod .hd h3 a:hover {
+    color: #369;
+    line-height: 18px;
+    font-weight: bold
+}
+
+.mod .bd {
+    overflow: hidden
+}
+#page .resource {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 25px
+}
+
+#extend .bd {
+    padding-top: 10px
+}
+
+#extend .artical-top p {
+    padding-left: 0
+}
+
+#extend .artical-top a {
+    font-size: 14px
+}
+
+#artical {
+    height: 400px;
+    overflow: hidden
+}
+
+#hot_artical .bd, #artical .bd {
+    padding-top: 5px
+}
+
+.artical-top li {
+    padding: 5px 0 5px 8px;
+    border-bottom: 1px dotted #ccc;
+    font-size: 12px;
+    line-height: 24px;
+    word-wrap: break-word;
+    word-break: break-all;
+    background: url(/static/images/dot.png) no-repeat left 15px
+}
+
+.artical-top li a:link, .artical-top li a:visited {
+    vertical-align: middle;
+    line-height: 24px;
+    color: #333
+}
+
+.artical-top span {
+    float: left;
+    margin-right: 10px;
+    width: 120px;
+    color: #999;
+    font: italic 22px/24px "Times New Roman,simsun";
+    overflow: hidden;
+    display: inline
+}
+
+.artical-top .first-item {
+    padding-left: 0;
+    background: 0
+}
+
+.artical-top .first-item p {
+    line-height: 16px;
+    margin-top: -3px;
+    padding-left: 0;
+    margin-left: 130px;
+    overflow: hidden
+}
+
+.artical-top .first-item .title {
+    height: 28px;
+    margin-bottom: 10px
+}
+
+.artical-top .first-item .text {
+    height: 22px
+}
+
+.artical-top .first-item p a, .artical-top .first-item h4 a {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #333
+}
+
+.artical-top .first-item div {
+    color: #999
+}
+
+.artical-top-num li:after {
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    overflow: hidden
+}
+
+.artical-top-num li {
+    padding-left: 0;
+    height: 24px;
+    overflow: hidden;
+    background: 0;
+    zoom: 1
+}
+
+.artical-top-num span, .artical-top-num .pic {
+    width: 28px;
+    margin: 0;
+    padding: 0;
+    display: inline
+}
+
+.artical-top li p {
+    padding-left: 30px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    line-height: 18px;
+    color: #999
+}
+
+.artical-top .top-1, .artical-top .top-1 span {
+    font-size: 30px;
+    line-height: 34px;
+    height: 34px;
+    overflow: hidden
+}
+
+.artical-top .top-1, .artical-top .top-2, .artical-top .top-3, .artical-top .top-1 span,
+.artical-top .top-2 span, .artical-top .top-3 span {
+    color: #f30
+}
+
+.artical-top .top-1 a:link, .artical-top .top-1 a:visited {
+    line-height: 34px;
+    font-size: 14px;
+    float: left;
+    height: 34px;
+    width: 235px;
+    overflow: hidden
+}
+
+.grade-s {
+    background: url(http://p3.qhimg.com/t01b6769ae0f282b903.png) no-repeat;
+    _background: url(http://p3.qhimg.com/t01b279378db642e929.png) no-repeat;
+    display: inline-block;
+    *display: inline;
+    height: 25px;
+    vertical-align: -7px;
+    width: 25px;
+    *zoom: 1
+    float: right;
+}
+
+
+.s1 {
+    background-position: 0 -29px
+}
+
+.s2 {
+    background-position: 0 -66px
+}
+
+.s3 {
+    background-position: 0 -107px
+}
+
+.s4 {
+    background-position: 0 -143px
+}
+
+.s5 {
+    background-position: 0 -180px
+}
+

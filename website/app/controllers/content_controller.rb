@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 $tags = {
-"bigbrother" => %w|腾讯 百度 新浪 华为 阿里 牌照 金融 微信 来往 微软 谷歌 京东 美团 特斯拉 中国移动 中国联通 电信 大众点评 酒仙网 银联 IBM HP 余额宝 央行 土豆 1号店 苹果 英特尔 4G 中兴 九城 YY 小米 红米 MIUI Google 海尔 微博 携程 赶集 58同城 金钱豹 支付宝 银行 Facebook 星巴克 联想|,
+"bigbrother" => %w|腾讯 百度 新浪 华为 阿里 牌照 金融 微信 来往 微软 谷歌 京东 美团 特斯拉 中国移动 中国联通 电信 大众点评 酒仙网 银联 IBM HP 余额宝 央行 土豆 1号店 苹果 英特尔 4G 中兴 九城 YY 小米 红米 MIUI Google 海尔 微博 携程 赶集 58同城 金钱豹 支付宝 银行 Facebook 星巴克 联想 HTC|,
 "people" => %w|王小川 周鸿祎 俞敏洪 柳传志 陈年 刘强东 马云 朱骏 孙正义 李彦宏 姚劲波 傅盛 雷军 张朝阳|,
 "security" => %w|黑客 漏洞 攻击 DDoS WAF 防火墙 渗透测试 freebuf keenteam ASLR nmap 安全扫描 安全协议 网络战 入侵 木马 后门 反射攻击 安全工程师 XSS 安全事件 网络劫持 安全问题 破解 APT 斯诺登 NSE Nmap 网络安全 网站安全 Security 病毒 安全 篡改 侵入 网络犯罪 网络间谍 黑阔 Shellcode 恶意软件代码 身份欺诈 盗刷 恶意软件|,
 "relax" => %w|姚晨 谢娜 李代沫|,
@@ -54,7 +54,7 @@ private
 			sql = @tag_array.map{|x| "title not like '%#{x}%' and description not like '%#{x}%'"}.join(' and ')
 		end
 
-  		@contents = get_contents(ip, sql)
+  		@contents = get_contents(sql)
   		render(:action => 'index')    
 	end
 
@@ -69,6 +69,8 @@ public
   	day = Time.now.strftime("%Y-%m-%d 00:00:00")
   	puts day
   	@contents = get_contents("created_at>='#{day}' and id not in (SELECT content_id from ipvotes where ip='#{request.remote_ip}')")
+  	@hot_artical = Content.find_by_sql("select * from contents join (select content_id as id, sum(vote) as vote from ipvotes group by content_id ORDER BY vote desc limit 10) t on contents.id=t.id where vote>0");
+  	@vote = true
   	render(:action => 'index')    
   end
 
