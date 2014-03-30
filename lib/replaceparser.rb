@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 
 =begin
 @replace = [{:type=>'delete_to_end', :from=>'aaaa', :to=>'', :from1=>''}]
@@ -50,5 +52,11 @@ module ReplaceParser
     }
 
     str
+  end
+end
+
+class String
+  def string_between_markers marker1, marker2
+    self[/#{Regexp.escape(marker1)}(.*?)#{Regexp.escape(marker2)}/m, 1]
   end
 end

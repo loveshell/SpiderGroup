@@ -18,6 +18,8 @@ Website::Application.routes.draw do
   get 'iheima' => 'content#iheima'
   get 'vaikan' => 'content#vaikan'
   get 'lusongsong' => 'content#lusongsong'
+  get 'kr36' => 'content#kr36'
+  get '36kr' => 'content#kr36'
 
   get 'vote' => 'content#vote'
   get 'word' => 'content#word'

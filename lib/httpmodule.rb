@@ -11,7 +11,7 @@ require 'pathname'
 
 module HttpModule
   def get_web_content(url, options=nil)
-    resp = {:error=>true, :errstring=>'', :code=>999, :url=>url, :html=>nil}
+    resp = {:error=>true, :errstring=>'', :code=>999, :url=>url, :html=>nil, :redirect_url=>nil}
 
     begin
       url = 'http://'+url+'/' if !url.include?('http://') and !url.include?('https://')
@@ -36,6 +36,9 @@ module HttpModule
         begin
           response = http.request request # Net::HTTPResponse object
           resp[:code] = response.code
+          if response['location']
+            resp[:redirect_url] = response['location']
+          end
           resp[:html] = nil
           if response.header[ 'Content-Encoding' ].eql?( 'gzip' )
             sio = StringIO.new( response.body )
@@ -76,14 +79,24 @@ module HttpModule
 
   def get_utf8(c)
     encoding = GuessHtmlEncoding.guess(c)
-    #puts encoding
-    if(encoding)
-      if(encoding.to_s != "UTF-8")
-        c = c.force_encoding(encoding)
-        c = c.encode('UTF-8', :invalid => :replace, :replace => '^')
+    begin
+      #puts encoding
+      if(encoding)
+        if(encoding.to_s != "UTF-8")
+          c = c.force_encoding(encoding)
+          c = c.encode('UTF-8', :invalid => :replace, :replace => '^')
+        end
+      else
+        c = c.force_encoding('UTF-8')
+        if !c.valid_encoding?
+          c = c.force_encoding("GB18030")
+          if !c.valid_encoding?
+            return ''
+          end
+          c = c.encode('UTF-8', :invalid => :replace, :replace => '^')
+        end
       end
-    else
-      c = c.force_encoding('UTF-8')
+
       if !c.valid_encoding?
         c = c.force_encoding("GB18030")
         if !c.valid_encoding?
@@ -91,14 +104,8 @@ module HttpModule
         end
         c = c.encode('UTF-8', :invalid => :replace, :replace => '^')
       end
-    end
-
-    if !c.valid_encoding?
-      c = c.force_encoding("GB18030")
-      if !c.valid_encoding?
-        return ''
-      end
-      c = c.encode('UTF-8', :invalid => :replace, :replace => '^')
+    rescue => e
+      puts "error of "+e.to_s
     end
 
     c
