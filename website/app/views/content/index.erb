@@ -11,8 +11,11 @@
           <div class="feeds-item">
           <h3><a href="/view/<%=c.id%>" target="_blank" class="feeds-item-more"><%=c.title%></a></h3>
           <div class="feeds-item-detail clearfix ">
-                    <% if c.cover %>
-           <p class="feeds-item-pic"><a href="<% c.url %>" target="_blank" class="feeds-item-more"><img src="/<%=c.cover%>"></a></p>
+                    <% if c.cover
+                       cover = c.cover
+                       cover = "/"+cover unless cover[0] == '/'
+                    %>
+           <p class="feeds-item-pic"><a href="<% c.url %>" target="_blank" class="feeds-item-more"><img src="<%=cover%>"></a></p>
                     <% end %>
                     <p class="feeds-item-text"><%=raw(c.description)%><a href="/view/<%=c.id%>" target="_blank" class="feeds-item-more">[详细]</a> </p>
                  <p class="feeds-item-info">

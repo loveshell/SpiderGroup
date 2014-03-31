@@ -34,8 +34,8 @@ class VaikanSpider < BaseSpider
         link = div.css("h2 a")[0]
         cover = nil
         if div.css("div.entry-thumbnail img").size>0
-          cover = div.css("div.entry-thumbnail img")[0]['src']
-          cover = download_img(cover, @url) if @options[:image] && cover
+          cover = div.css("div.entry-thumbnail img")[0]
+          cover = receive_img(cover, @url).last[:to] if @options[:image] && cover
         end
         desc = div.css("div.entry-content")[0]
         author = "vaikan"

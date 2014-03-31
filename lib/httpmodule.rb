@@ -196,33 +196,38 @@ module HttpModule
     'imgs/'+filename
   end
 
+
+  def receive_img(img, referer)
+    imgs = []
+    #ap img
+    img_src = img['src']
+    local_file = nil
+    local_file = download_img(img_src, referer) if img_src
+
+
+    if img['data-original']
+      img_src = img['data-original']
+      local_file = download_img(img_src, referer)
+      imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
+    end
+
+    if img['data-src']
+      img_src = img['data-src']
+      local_file = download_img(img_src, referer)
+      imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
+    end
+
+    imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} if local_file
+    imgs
+  end
+
   #分析html(Nokogiri的node类型)中得所有img标签，下载图片到本地，然后返回替换的数组
   def receive_imgs(html,referer)
     imgs = []
     html.css('img').each {|img|
-      #ap img
-      img_src = img['src']
-      local_file = nil
-      local_file = download_img(img_src, referer) if img_src
-
-
-      if img['data-original']
-        img_src = img['data-original']
-        local_file = download_img(img_src, referer)
-        imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
-      end
-
-      if img['data-src']
-        img_src = img['data-src']
-        local_file = download_img(img_src, referer)
-        imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
-      end
-
-      #if local_file
-        #a = {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true}
-        #puts a
-      #end
-      imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} if local_file
+      receive_img(img, referer).each {|i|
+        imgs << i
+      }
     }
     imgs
   end
