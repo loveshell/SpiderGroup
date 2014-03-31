@@ -13,7 +13,7 @@ class OptsConsole
   # Return a hash describing the options.
   #
   def self.parse(args)
-    options = { :page=>1,:image=>0, :cachetime=>7200 }
+    options = { :page=>1,:image=>0, :cachetime=>7200, :log_level=>0 }
 
     #加载默认配置
     cfg_file = File.expand_path(File.join(File.dirname(__FILE__), 'config.yml'))
@@ -50,6 +50,10 @@ class OptsConsole
         options[:page] = p.to_i
       end
 
+      opts.on("-e", "--level <level>", "Log level, DEFAULT=0 (0 error; 1 info; 2 debug)") do |p|
+        options[:log_level] = p.to_i
+      end
+
       opts.on("-i", "--image <0|1>", "Whether download image and replace img src, DEFAULT=0") do |p|
         options[:image] = p.to_i
       end
@@ -74,6 +78,12 @@ end
 @options = OptsConsole.parse(ARGV)
 @logger ||= Logger.new(STDOUT)
 @logger.level = Logger::ERROR
+@logger.level = case @options[:log_level]
+                  when 0 then Logger::ERROR
+                  when 1 then Logger::INFO
+                  when 2 then Logger::DEBUG
+                  else Logger::ERROR
+                end
 #@logger = Logger.new('operation.log')
 DBManager.new(@options)
 

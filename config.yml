@@ -18,3 +18,6 @@ dbfile: ./website/db/content.s3db
 
 #图片文件存储路径
 img_save_path: ./website/public/imgs
+
+#调试0 error; 1 info; 2 debug
+log_level: 0
