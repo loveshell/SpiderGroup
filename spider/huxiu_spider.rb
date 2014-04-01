@@ -12,15 +12,15 @@ require 'feedjira'
 
 
 
-class Kr36Spider < BaseSpider
+class HuxiuSpider < BaseSpider
 
   def initialize(*args)
     super(args)
-    @name = "36kr"
+    @name = "huxiu"
     @category = "互联网 创业"
-    @list_url = "http://www.36kr.com/feed"
+    @list_url = "http://www.huxiu.com/rss/0.xml"
     @url = ''
-    @replaces = [{:type=>'replace_to_end', :from=>'除非注明，本站文章均为原创或编译', :to=>''}]
+    @replaces = [{:type=>'replace_to_end', :from=>'文章为作者独立观点，不代表虎嗅网立场', :to=>''}]
   end
 
   #获取文章列表
@@ -32,7 +32,6 @@ class Kr36Spider < BaseSpider
     if !html[:error]
       feed = Feedjira::Feed.parse(html[:utf8html])
       feed.entries.each{|f|
-        author = f.author.string_between_markers("(", ")")
         doc = Nokogiri::HTML(f.summary)
 
         cover = nil
@@ -40,9 +39,10 @@ class Kr36Spider < BaseSpider
           cover = doc.css("img")[0]['src']
           cover = download_img(cover, @url) if @options[:image] && cover
         end
+
         summary = replace_by_type(@replaces, f.summary)
         
-        content_list << {:source=>@name, :title=>f.title, :url=>f.url, :description=>summary, :cover=>cover, :author=>author, :created_at=>f.published}
+        content_list << {:source=>@name, :title=>f.title, :url=>f.url, :description=>summary, :cover=>cover, :created_at=>f.published}
       
       }
       #ap html[:utf8html]
@@ -63,7 +63,8 @@ class Kr36Spider < BaseSpider
         return get_content_info u
       end
       doc = Nokogiri::HTML(html[:utf8html])
-      cdiv = doc.css("section.article")[0]
+      cdiv = doc.css("div.neirong-box")[0]
+      u[:author] = doc.css("span.recommenders a.hx-card")[0].text if doc.css("span.recommenders a.hx-card")[0]
       content = cdiv.inner_html
 
       u[:content] = replace_by_type(@replaces, content)
@@ -105,8 +106,8 @@ end
 
 if __FILE__==$0
   
-  #Kr36Spider.new(options: {:page=>2, :image=>1}).get_content_info url:'http://www.36kr.com/p/210763.html'
-  Kr36Spider.new(options: {:page=>2, :image=>1}).fetch {|u|
+  #HuxiuSpider.new(options: {:page=>2, :image=>1}).get_content_info url:'http://www.36kr.com/p/210763.html'
+  HuxiuSpider.new(options: {:page=>2, :image=>1}).fetch {|u|
     ap u
   }
 end
