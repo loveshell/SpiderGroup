@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 $tags = {
-"bigbrother" => %w|腾讯 百度 新浪 华为 阿里 牌照 金融 微信 来往 微软 谷歌 京东 美团 特斯拉 中国移动 中国联通 电信 大众点评 酒仙网 银联 IBM HP 余额宝 央行 土豆 1号店 苹果 英特尔 4G 中兴 九城 YY 小米 红米 MIUI Google 海尔 微博 携程 赶集 58同城 金钱豹 支付宝 银行 Facebook 星巴克 联想 HTC 蓝港在线 Azure 网易 新东方 优酷 youku LTE 亚马逊 500彩票网 网龙 淘宝 艺龙 如家 汉庭 Line KaKaoTalk WhatsApp 百合网 陌陌 步步高 天弘基金 当当|,
+"bigbrother" => %w|腾讯 百度 新浪 华为 阿里 牌照 金融 微信 来往 微软 谷歌 京东 美团 特斯拉 中国移动 中国联通 电信 大众点评 酒仙网 银联 IBM HP 余额宝 央行 土豆 1号店 苹果 英特尔 4G 中兴 九城 YY 小米 红米 MIUI Google 海尔 微博 携程 赶集 58同城 金钱豹 支付宝 银行 Facebook 星巴克 联想 HTC 蓝港在线 Azure 网易 新东方 优酷 youku LTE 亚马逊 500彩票网 网龙 淘宝 艺龙 如家 汉庭 Line KaKaoTalk WhatsApp 百合网 陌陌 步步高 天弘基金 当当 银泰|,
 "people" => %w|王小川 周鸿祎 俞敏洪 柳传志 陈年 刘强东 马云 朱骏 孙正义 李彦宏 姚劲波 傅盛 雷军 张朝阳 王峰 朱新礼 杨守彬 丁磊 马化腾 徐小平 鬼脚七 扎克伯格 乔布斯 唐岩|,
 "security" => %w|黑客 漏洞 攻击 DDoS WAF 防火墙 渗透测试 freebuf keenteam ASLR nmap 安全扫描 安全协议 网络战 入侵 木马 后门 反射攻击 安全工程师 XSS 安全事件 网络劫持 安全问题 破解 APT 斯诺登 NSE Nmap 网络安全 网站安全 Security 病毒 安全 篡改 侵入 网络犯罪 网络间谍 黑阔 Shellcode 恶意软件代码 身份欺诈 盗刷 恶意软件 穷举 诈骗 盗窃 取证 Dos攻击 OWASP 隐私泄露 泄密门 恶意程序 感染 0day 执行任意代码 内存破坏 系统崩溃 金山毒霸 信息安全 AdwCleaner 监控 杀毒 白帽 泄露门 安全事故 信用卡泄露 NSA Shotgiant 监视 writeup 伪装 隐私 信用卡门 漏洞分析 监听 嗅探 密码泄露|  ,
 "relax" => %w|姚晨 谢娜 李代沫 汪峰 明星 影视 娱乐 林依轮 满文军 爱情公寓 米老鼠 文章同学 马伊琍|,
