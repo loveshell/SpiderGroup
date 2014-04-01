@@ -80,7 +80,7 @@ module HttpModule
   def get_utf8(c)
     encoding = GuessHtmlEncoding.guess(c)
     begin
-      #puts encoding
+      puts encoding
       if(encoding)
         if(encoding.to_s != "UTF-8")
           c = c.force_encoding(encoding)
@@ -105,7 +105,7 @@ module HttpModule
         c = c.encode('UTF-8', :invalid => :replace, :replace => '^')
       end
     rescue => e
-      puts "error of "+e.to_s
+      puts "error of "+e.backtrace.inspect
     end
 
     c
@@ -203,21 +203,20 @@ module HttpModule
     img_src = img['src']
     local_file = nil
     local_file = download_img(img_src, referer) if img_src
-
+    imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} if local_file
 
     if img['data-original']
       img_src = img['data-original']
       local_file = download_img(img_src, referer)
-      imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
+      imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
     end
 
     if img['data-src']
       img_src = img['data-src']
       local_file = download_img(img_src, referer)
-      imgs << {:from=>img['src'], :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
+      imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
     end
 
-    imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} if local_file
     imgs
   end
 

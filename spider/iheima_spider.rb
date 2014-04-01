@@ -17,7 +17,7 @@ class IheimaSpider < BaseSpider
     @category = "互联网 创业"
     @list_url = ["http://new.iheima.com/%i.html","http://new.iheima.com/"]
     @url = ''
-    @replaces = [{:type=>'replace_to_end', :from=>'如文中未特别声明转载请注明出自', :to=>''}]
+    @replaces = []
   end
 
   #获取文章列表
@@ -105,6 +105,7 @@ class IheimaSpider < BaseSpider
 end
 
 if __FILE__==$0
+  #IheimaSpider.new(options: {:page=>1, :image=>1}).get_content_info url:'http://new.iheima.com/detail/2014/0331/60051.html'
   IheimaSpider.new(options: {:page=>1, :image=>1} ).fetch {|u|
     ap u
   }

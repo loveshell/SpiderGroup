@@ -15,7 +15,7 @@
                        cover = c.cover
                        cover = "/"+cover unless cover[0] == '/'
                     %>
-           <p class="feeds-item-pic"><a href="<% c.url %>" target="_blank" class="feeds-item-more"><img src="<%=cover%>"></a></p>
+           <p class="feeds-item-pic"><a href="/view/<%=c.id%>" target="_blank" class="feeds-item-more"><img src="<%=cover%>"></a></p>
                     <% end %>
                     <p class="feeds-item-text"><%=raw(c.description)%><a href="/view/<%=c.id%>" target="_blank" class="feeds-item-more">[详细]</a> </p>
                  <p class="feeds-item-info">
