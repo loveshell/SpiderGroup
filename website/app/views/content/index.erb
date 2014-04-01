@@ -1,4 +1,12 @@
-<% content_for :title do %>首页<% end %>
+<%
+content_for :title do
+   if @title
+     @title
+   else
+%>首页<%
+   end
+end
+%>
 
   <div class="l-main-col">
 

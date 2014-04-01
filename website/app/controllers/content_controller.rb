@@ -48,8 +48,10 @@ private
 		@tag_array = nil
 		if tagname.respond_to? "map"
 			@tag_array = tagname
+      @title = tagname[0]
 		else
 			@tag_array = $tags[tagname]
+      @title = tagname
 		end
 
 		if if_or
@@ -59,11 +61,13 @@ private
 		end
 
   		@contents = get_contents(sql)
+
   		render(:action => 'index')    
 	end
 
 	def render_source(source, if_or=true)
   		@contents = get_contents(:source=>source)
+      @title = "来源："+source
   		render(:action => 'index')    
 	end
 
@@ -101,6 +105,7 @@ public
 
     @voted = Content.find_by_sql("select ip, count(content_id) as cnt from ipvotes where created_at>='#{day}' group by ip order by cnt desc")
 
+    @title = "审核"
   	render(:action => 'index')    
   end
 
