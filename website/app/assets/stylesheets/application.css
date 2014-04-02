@@ -74,12 +74,7 @@ a:visited {
   font-size: 80%;
 }
 
-.posts p {
-    margin: 25px 0;
-    font-size: 14px;
-    line-height: 24px;
-    text-indent: 28px
-}
+
 
 
 /*****************************************************************************/
@@ -164,6 +159,13 @@ a:visited {
   border: 1px solid #ddd;
   background-color: #eef;
   padding: 0 .4em;
+}
+
+.post p {
+    margin: 25px 0;
+    font-size: 14px;
+    line-height: 24px;
+    text-indent: 28px
 }
 
 .post ul, .post ol {
