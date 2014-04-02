@@ -193,6 +193,17 @@ a:visited {
   background-color: #333;
 }
 
+.post {margin-top:10px;}
+.post h1 {font-size:26px;line-height:38px;font-weight:bold;}
+.post .subtitle-h1 {font-size:18px;line-height:28px;}
+.post table {table-layout:fixed;width:100%;}
+.post table td {word-wrap:break-word;}
+.post table .span-img img {
+        max-width: 628px;
+        width: expression(this.offsetWidth >= 628 ? 628:'auto');}
+.post table img {
+        max-width: 537px;
+        width: expression(this.offsetWidth >= 537 ? 537:'auto');}
 .feeds {
     margin-top: -1px;
     padding: 0 0 25px
