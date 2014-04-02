@@ -204,6 +204,11 @@ a:visited {
 .post table img {
         max-width: 537px;
         width: expression(this.offsetWidth >= 537 ? 537:'auto');}
+.post table div{    margin: 25px 0;
+    font-size: 14px;
+    line-height: 24px;
+    text-indent: 28px
+}
 .feeds {
     margin-top: -1px;
     padding: 0 0 25px
