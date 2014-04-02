@@ -20,7 +20,9 @@ class HuxiuSpider < BaseSpider
     @category = "互联网 创业"
     @list_url = "http://www.huxiu.com/rss/0.xml"
     @url = ''
-    @replaces = [{:type=>'replace_to_end', :from=>'文章为作者独立观点，不代表虎嗅网立场', :to=>''}]
+    @replaces = [{:type=>'replace_to_end', :from=>'文章为作者独立观点，不代表虎嗅网立场', :to=>''},
+      {:type=>'string_replace', :from=>'<div><br></div>', :to=>''},
+    ]
   end
 
   #获取文章列表
