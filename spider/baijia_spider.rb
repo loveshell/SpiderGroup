@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 if __FILE__==$0
   $:.unshift(File.expand_path(File.dirname(__FILE__)))
   .unshift(File.expand_path(File.join(File.dirname(__FILE__), './')))
@@ -83,7 +85,7 @@ class BaijiaSpider < BaseSpider
     added = true
     page = 1
     while added && page <= @options[:page]
-      @url = @list_url % page
+      @url = get_content_list_url(page)
       added = false
       self.get_content_url_list.each {|u|
         added = true

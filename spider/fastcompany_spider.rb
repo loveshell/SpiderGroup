@@ -8,21 +8,17 @@ end
 
 require 'awesome_print'
 require 'base_spider'
-require 'feedjira'
+require 'json'
 
-
-
-class HuxiuSpider < BaseSpider
+class FastcompanySpider < BaseSpider
 
   def initialize(*args)
     super(args)
-    @name = "huxiu"
-    @category = "互联网 创业"
-    @list_url = "http://www.huxiu.com/rss/0.xml"
+    @name = "fastcompany"
+    @category = "有趣 资讯 互联网"
+    @list_url = "http://www.fastcompany.cn"
     @url = ''
-    @replaces = [{:type=>'replace_to_end', :from=>'文章为作者独立观点，不代表虎嗅网立场', :to=>''},
-      {:type=>'string_replace', :from=>'<div><br></div>', :to=>''},
-    ]
+    @replaces = []
   end
 
   #获取文章列表
@@ -32,21 +28,32 @@ class HuxiuSpider < BaseSpider
     #ap @url
     html = load_info @url
     if !html[:error]
-      feed = Feedjira::Feed.parse(html[:utf8html])
-      feed.entries.each{|f|
-        doc = Nokogiri::HTML(f.summary)
-
-        cover = nil
-        if doc.css("img")[0]
-          cover = doc.css("img")[0]['src']
-          cover = download_img(cover, @url) if @options[:image] && cover
-        end
-
-        summary = replace_by_type(@replaces, f.summary)
+      doc = Nokogiri::HTML(html[:utf8html])
+      #ap doc
+      doc.css("article.node").each do |div|
+        link = div.css("h1 a")[0]
+        link = div.css("h2 a")[0] unless div.css("h1 a")[0]
+        cover = div.css("figure img")[0]['src']
+        cover = download_img(cover, @url) if @options[:image] && cover
+        desc = div.css("div.node-teaser p")[0]
+        author = div.css("div.node-submitted a.username")[0]
         
-        content_list << {:source=>@name, :title=>f.title, :url=>f.url, :description=>summary, :cover=>cover, :created_at=>f.published}
-      
-      }
+        if author #top news没有信息，这一条先不要
+          time = nil
+          if div.css("h5.date")[0]
+            time = div.css("h5.date")[0].text + " "
+            t = div.css("h5.time")[0].text.split(' ')
+            ta = t[0].split(':')
+            if t[1].include? 'PM'
+              ta[0] = (ta[0].to_i + 12).to_s
+            end
+            time += ta.join(':')
+            time += ":00"
+            p time
+          end
+          content_list << {:source=>@name, :title=>link.text, :url=>link['href'], :description=>desc.text, :cover=>cover, :author=>author.text.strip, :created_at=>time}
+        end
+      end
       #ap html[:utf8html]
     else
       @logger.fatal(self.class.to_s) {" get_content_url_list error "+@url}
@@ -60,13 +67,8 @@ class HuxiuSpider < BaseSpider
     @logger.debug(self.class.to_s) {" get_content_info of "+u[:url]}
     html = load_info u[:url]
     if !html[:error]
-      if html[:redirect_url]
-        u[:url] = html[:redirect_url]
-        return get_content_info u
-      end
       doc = Nokogiri::HTML(html[:utf8html])
-      cdiv = doc.css("div.neirong-box")[0]
-      u[:author] = doc.css("span.recommenders a.hx-card")[0].text if doc.css("span.recommenders a.hx-card")[0]
+      cdiv = doc.css("div.content")[0]
       content = cdiv.inner_html
 
       u[:content] = replace_by_type(@replaces, content)
@@ -76,7 +78,6 @@ class HuxiuSpider < BaseSpider
         img_list = receive_imgs(cdiv, u[:url])
         u[:content] = replace_by_type(img_list, u[:content])
       end
-
     else
       @logger.fatal(self.class.to_s) {" get_content_info error "+u[:url]}
     end
@@ -108,9 +109,7 @@ class HuxiuSpider < BaseSpider
 end
 
 if __FILE__==$0
-  
-  #HuxiuSpider.new(options: {:page=>2, :image=>1}).get_content_info url:'http://www.36kr.com/p/210763.html'
-  HuxiuSpider.new(options: {:page=>2, :image=>1}).fetch {|u|
+  FastcompanySpider.new(options: {:page=>1, :image=>1}).fetch {|u|
     ap u
   }
 end

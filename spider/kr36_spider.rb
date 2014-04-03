@@ -98,6 +98,7 @@ class Kr36Spider < BaseSpider
         sleep 0.5
       }
       page += 1
+      break #只能提取一页
       sleep 1
     end
   end
