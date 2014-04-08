@@ -49,7 +49,6 @@ class FastcompanySpider < BaseSpider
             end
             time += ta.join(':')
             time += ":00"
-            p time
           end
           content_list << {:source=>@name, :title=>link.text, :url=>link['href'], :description=>desc.text, :cover=>cover, :author=>author.text.strip, :created_at=>time}
         end

@@ -18,7 +18,7 @@ end
       end
         @contents.each {|c|%>
           <div class="feeds-item">
-          <h3><a href="/view/<%=c.id%>" target="_blank" class="feeds-item-more"><%=c.title%></a></h3>
+          <h3><a href="/view/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><%=c.title%></a></h3>
           <div class="feeds-item-detail clearfix ">
                     <% if c.cover
                        cover = c.cover

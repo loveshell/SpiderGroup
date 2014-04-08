@@ -80,7 +80,7 @@ module HttpModule
   def get_utf8(c)
     encoding = GuessHtmlEncoding.guess(c)
     begin
-      puts encoding
+      #puts encoding
       if(encoding)
         if(encoding.to_s != "UTF-8")
           c = c.force_encoding(encoding)
