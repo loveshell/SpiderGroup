@@ -8,6 +8,13 @@ require 'nokogiri'
 require 'fileutils'
 require 'digest'
 require 'pathname'
+require 'base64'
+
+class String
+  def string_between_markers marker1, marker2
+    self[/#{Regexp.escape(marker1)}(.*?)#{Regexp.escape(marker2)}/m, 1]
+  end
+end
 
 module HttpModule
   def get_web_content(url, options=nil)
@@ -174,23 +181,41 @@ module HttpModule
   def download_img(img_src, refer)
     @options ||= {}
     img_src = URI.encode(img_src) unless img_src.include? '%' #如果包含百分号%，说明已经编码过了
+    is_img_data = img_src.include? 'data:image/' #src 就是图片数据
     u = URI.join(refer, img_src)
     abs_img_url = u.to_s
     path = File.join(File.dirname(__FILE__), 'imgs')
     path = File.join(File.dirname(__FILE__), '../'+@options[:img_save_path]) if @options[:img_save_path]
     FileUtils.mkdir_p path
     filename = Digest::MD5.hexdigest(abs_img_url)
-    filename += File.extname(u.path) if File.extname(u.path)
+
+    ext = nil
+    if is_img_data
+      ext = "."+abs_img_url.string_between_markers("data:image/",";")
+    else
+      ext = File.extname(u.path) if File.extname(u.path)
+    end
+
+    filename += ext if ext
     path = File.join(path, filename)
     if !File.exists? path
-      http = get_web_content abs_img_url, referer: refer
-      if http[:error]
-        @logger.error "download img error of #{abs_img_url} from #{refer}" if @logger
-      else
+      if is_img_data
+        base64_data = img_src["data:image/#{ext[1 .. -1]};base64,".length .. -1]
+        img_data = Base64.decode64(base64_data)
         File.open(path, "wb") do |f|
-          f.write(http[:html])
+          f.write(img_data)
+        end
+      else
+        http = get_web_content abs_img_url, referer: refer
+        if http[:error]
+          @logger.error "download img error of #{abs_img_url} from #{refer}" if @logger
+        else
+          File.open(path, "wb") do |f|
+            f.write(http[:html])
+          end
         end
       end
+
     end
     #Pathname.new(path).relative_path_from(Pathname.new(File.dirname(__FILE__)+'/../website/public')).to_s
     'imgs/'+filename
