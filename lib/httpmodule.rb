@@ -28,10 +28,11 @@ module HttpModule
       ip = options[:hostip] if options && options[:hostip]
       resp[:host] = uri.host
       resp[:ip] = ip
-      Net::HTTP.start(ip, uri.port) do |http|
-        http.use_ssl = true if uri.scheme == 'https'
-        http.open_timeout = 10
-        http.read_timeout = 10
+      http = Net::HTTP.new(ip, uri.port)
+      http.use_ssl = true if uri.scheme == 'https'
+      http.open_timeout = 10
+      http.read_timeout = 10
+      http.start { |h|
         request = Net::HTTP::Get.new uri.request_uri
         request['Host'] = uri.host
         request['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
@@ -41,7 +42,7 @@ module HttpModule
         request['User-Agent'] = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1'
         request['Referer'] = options[:referer] if options && options[:referer]
         begin
-          response = http.request request # Net::HTTPResponse object
+          response = h.request request # Net::HTTPResponse object
           resp[:code] = response.code
           if response['location']
             resp[:redirect_url] = response['location']
@@ -63,7 +64,7 @@ module HttpModule
         rescue =>e
           resp[:code] = 998
         end
-      end
+      }
     rescue Timeout::Error  => the_error
       resp[:error] = true
       resp[:errstring] = "Timeout::Error of : #{url}\n error:#{$!} at:#{$@}\nerror : #{the_error}"
