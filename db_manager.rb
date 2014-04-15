@@ -27,6 +27,7 @@ class DBManager
 
         if !table_exists? :ipvotes
           create_table :ipvotes do |table|
+            table.column :user_id, :integer
             table.column :ip, :string
             table.column :vote, :integer
             table.column :created_at, :datetime
@@ -35,7 +36,7 @@ class DBManager
         end
 
         add_index(:contents, :url, :unique => true) if !index_exists?(:contents, :url, :unique => true)
-        add_index(:ipvotes, [:content_id, :ip], :unique => true) if !index_exists?(:ipvotes, [:content_id, :ip], :unique => true)
+        add_index(:ipvotes, [:content_id, :user_id], :unique => true) if !index_exists?(:ipvotes, [:content_id, :user_id], :unique => true)
       end
     #end
   end

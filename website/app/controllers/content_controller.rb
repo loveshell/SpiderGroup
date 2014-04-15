@@ -80,7 +80,7 @@ public
   def check
   	day = Time.now.strftime("%Y-%m-%d 00:00:00")
   	puts day
-  	@contents = get_contents("created_at>='#{day}' and id not in (SELECT content_id from ipvotes where ip='#{request.remote_ip}')")
+  	@contents = get_contents("created_at>='#{day}' and id not in (SELECT content_id from ipvotes where user_id='#{current_user.id}')")
   	@hot_artical = Content.find_by_sql("select * from contents join (select content_id as id, sum(vote) as vote from ipvotes where created_at>='#{day}' group by content_id ORDER BY vote desc limit 5) t on contents.id=t.id where vote>0")
   	@vote = true
 
@@ -103,7 +103,7 @@ public
     }
     @hot_word = @hot_word.sort_by{|k,v| v}.reverse
 
-    @voted = Content.find_by_sql("select ip, count(content_id) as cnt from ipvotes where created_at>='#{day}' group by ip order by cnt desc")
+    @voted = Content.find_by_sql("select user_id, count(content_id) as cnt from ipvotes where created_at>='#{day}' and user_id>0 group by user_id order by cnt desc")
 
     @title = "审核"
   	render(:action => 'index')    
@@ -173,14 +173,15 @@ public
 #################
   def vote
   	ip = request.remote_ip
-  	if !Ipvote.where(ip: ip, content_id: params[:content_id]).exists?
-  		Ipvote.create({ip: ip, content_id: params[:content_id], vote: params[:vote], created_at: Time.now })
+    user_id = current_user.id
+  	if !Ipvote.where(user_id: user_id, content_id: params[:content_id]).exists?
+  		Ipvote.create({user_id: user_id, ip: ip, content_id: params[:content_id], vote: params[:vote], created_at: Time.now })
   	end
 
   	if request.referer
   		redirect_to request.referer
   	else
-	  redirect_to :action => 'index'
+	  redirect_to :action => 'check'
 	end
   end
 ##################
