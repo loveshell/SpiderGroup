@@ -21,3 +21,6 @@ img_save_path: ./website/public/imgs
 
 #调试0 error; 1 info; 2 debug
 log_level: 0
+
+#代理
+proxy: 139.210.98.86:8080

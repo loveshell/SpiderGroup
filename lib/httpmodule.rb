@@ -17,7 +17,8 @@ class String
 end
 
 module HttpModule
-  def get_web_content(url, options=nil)
+  def get_web_content(url,ops=nil)
+    @options ||= {}
     resp = {:error=>true, :errstring=>'', :code=>999, :url=>url, :html=>nil, :redirect_url=>nil}
 
     begin
@@ -25,10 +26,17 @@ module HttpModule
       url = URI.encode(url) unless url.include? '%' #如果包含百分号%，说明已经编码过了
       uri = URI(url)
       ip = uri.host
-      ip = options[:hostip] if options && options[:hostip]
+      ip = ops[:hostip] if ops && ops[:hostip]
       resp[:host] = uri.host
       resp[:ip] = ip
-      http = Net::HTTP.new(ip, uri.port)
+
+      http_class = Net::HTTP
+      if @options[:proxy]
+        aURL = URI.parse('http://'+@options[:proxy])
+        proxyHost, proxyPort = [ aURL.host, aURL.port ]
+        http_class = Net::HTTP.Proxy(proxyHost, proxyPort)
+      end
+      http = http_class.new(ip, uri.port)
       http.use_ssl = true if uri.scheme == 'https'
       http.open_timeout = 10
       http.read_timeout = 10
@@ -40,7 +48,7 @@ module HttpModule
         request['Accept-Encoding'] = 'gzip,deflate,sdch' unless (ENV['OS'] == 'Windows_NT')  #windows下处理gzip暂时有点问题
         request['Accept-Language'] = 'zh-CN,zh;q=0.8'
         request['User-Agent'] = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1'
-        request['Referer'] = options[:referer] if options && options[:referer]
+        request['Referer'] = ops[:referer] if ops && ops[:referer]
         begin
           response = h.request request # Net::HTTPResponse object
           resp[:code] = response.code

@@ -105,9 +105,21 @@ class Kr36Spider < BaseSpider
 end
 
 if __FILE__==$0
-  
-  #Kr36Spider.new(options: {:page=>2, :image=>1}).get_content_info url:'http://www.36kr.com/p/210763.html'
-  Kr36Spider.new(options: {:page=>2, :image=>1}).fetch {|u|
+  #加载默认配置
+  options = {}
+  cfg_file = File.expand_path(File.join(File.dirname(__FILE__), '../config.yml'))
+  if File.exist? cfg_file
+    cfg = YAML.load_file(cfg_file)
+    cfg.each{|k,v|
+      options[k.to_sym] = v
+    }
+  end
+  Kr36Spider.new(options: options).fetch {|u|
     ap u
   }
+
+  #Kr36Spider.new(options: {:page=>2, :image=>1}).get_content_info url:'http://www.36kr.com/p/210763.html'
+  #Kr36Spider.new(options: {:page=>2, :image=>1}).fetch {|u|
+  #  ap u
+  #}
 end
