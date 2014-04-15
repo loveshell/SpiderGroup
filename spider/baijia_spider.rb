@@ -102,6 +102,7 @@ class BaijiaSpider < BaseSpider
 end
 
 if __FILE__==$0
+  BaijiaSpider.new(options: {:page=>1, :image=>1}).get_content_info url:'http://tangxunfang.baijia.baidu.com/article/11587'
   BaijiaSpider.new(options: {:page=>1, :image=>1}).fetch {|u|
     #ap u
   }

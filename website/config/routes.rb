@@ -1,9 +1,11 @@
 Website::Application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'content#index'
+  get 'check' => 'content#check'
   get 'all' => 'content#all'
   get 'view/:id' => 'content#view'
   get 'bigbrother' => 'content#bigbrother'
@@ -16,10 +18,13 @@ Website::Application.routes.draw do
 
   get 'Freebuf' => 'content#Freebuf'
   get 'iheima' => 'content#iheima'
+  get 'huxiu' => 'content#huxiu'
   get 'vaikan' => 'content#vaikan'
   get 'lusongsong' => 'content#lusongsong'
   get 'kr36' => 'content#kr36'
   get '36kr' => 'content#kr36'
+  get 'fastcompany' => 'content#fastcompany'
+  
 
   get 'vote' => 'content#vote'
   get 'word' => 'content#word'

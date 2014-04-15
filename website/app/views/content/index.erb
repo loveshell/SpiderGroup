@@ -24,15 +24,17 @@ end
                        cover = c.cover
                        cover = "/"+cover unless cover[0] == '/'
                     %>
-           <p class="feeds-item-pic"><a href="/view/<%=c.id%>" target="_blank" class="feeds-item-more"><img src="<%=cover%>"></a></p>
+           <p class="feeds-item-pic"><a href="/view/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><img src="<%=cover%>"></a></p>
                     <% end %>
-                    <p class="feeds-item-text"><%=raw(c.description)%><a href="/view/<%=c.id%>" target="_blank" class="feeds-item-more">[详细]</a> </p>
+                    <p class="feeds-item-text"><%=raw(c.description)%><a href="/view/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more">[详细]</a> </p>
                  <p class="feeds-item-info">
                     <span><%=c.created_at%> </span>
                     <span>来源：<a href="/<%=c.source%>"><%=c.source%></a></span>
-                    <% c.cat.each_key {|category| %>
+                    <% if c.cat 
+                      c.cat.each_key {|category| %>
                     <a href="/<%=category%>"><%=category%></a>
-                    <% } %>
+                    <% } 
+                    end%>
                  </p>   
                  <% if @vote %>
                  <p class="feeds-item-info">
@@ -42,10 +44,12 @@ end
                  </p>
                 <% end %>
                  <p class="feeds-item-info">
-                  <% c.cat.each {|category,keys| 
+                  <% if c.cat 
+                    c.cat.each {|category,keys| 
                     keys.each{|k|%>
                   <a href="/word/?w=<%=k%>"><%=k%></a>
-                  <% }} %>
+                  <% }} 
+                  end%>
                  </p>
              </div>
            </div>
@@ -53,7 +57,7 @@ end
     </div>
     <!-- 分页链接 -->
     <div class="pull-right pages">
-      <%=will_paginate(@contents, :prev_label=>'Previous', :next_label=>'Next', :separator=>" | ") %>  
+      <%=will_paginate(@contents, :prev_label=>'上一页', :next_label=>'下一页', :separator=>" | ") %>  
     </div>
 
 </div>

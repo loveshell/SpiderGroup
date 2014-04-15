@@ -21,6 +21,7 @@ class DBManager
             table.column :description, :text
             table.column :content, :text
             table.column :source, :string
+            table.column :published, :boolean
           end
         end
 

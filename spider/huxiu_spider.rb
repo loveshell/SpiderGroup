@@ -21,7 +21,8 @@ class HuxiuSpider < BaseSpider
     @list_url = "http://www.huxiu.com/rss/0.xml"
     @url = ''
     @replaces = [{:type=>'replace_to_end', :from=>'文章为作者独立观点，不代表虎嗅网立场', :to=>''},
-      {:type=>'string_replace', :from=>'<div><br></div>', :to=>''},
+      {:type=>'string_replace', :from=>'<div><br></div>', :to=>'<br>'},
+      #{:type=>'string_replace', :from=>'<br><br>', :to=>'<br>', :repead=>true},
     ]
   end
 

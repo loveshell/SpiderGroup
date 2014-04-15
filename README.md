@@ -26,6 +26,7 @@ SpiderGroup 站群抓取服务
 * 可以提取异步加载的图片（比如制定data-original，data-src等)
 * 可以提取img src中数据为base64格式的图片
 * 一小时内不再抓取
+* 支持网络代理
 
 ###### 运行：
 1. 新建cron任务，crontab -e加入执行，建议每30分钟执行一次daemon.sh

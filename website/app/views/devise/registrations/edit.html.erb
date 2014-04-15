@@ -1,0 +1,29 @@
+<h2>编辑 <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div>邮箱<br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div>新密码 <i>(如果不想修改密码，直接留空即可)</i><br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
+
+  <div>重复新密码<br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div>当前密码 <i>(我们需要你的当前密码来确认修改)</i><br />
+  <%= f.password_field :current_password %></div>
+
+  <div><%= f.submit "更新" %></div>
+<% end %>
+
+<h3>删除我的账号</h3>
+
+<p>不好玩? <%= button_to "删除我的账号", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+
+<%= link_to "返回", :back %>

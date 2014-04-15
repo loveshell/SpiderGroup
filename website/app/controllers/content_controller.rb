@@ -13,7 +13,7 @@ $tags = {
 "other" => %w|马来西亚 马航 航空 广电 互联网思维 互联网 颠覆 革命 疑云 发布 高端 产品定位 自救 企业 实战 公众号 好文 小马哥 鲶鱼 股东 复兴 技术 专家 无家可归 DNS 智能手机 智能手表 物联网 智能电视 智能家居 智能硬件 汽车 世界杯 电视 危机 死亡 监管 体制 搅局 建班子 定战略 带队伍 研究 众筹 泼点冷水 泼冷水 股份 百亿 10亿 黑马 iPhone iPad Mac 大屏 谍照 靠谱 自媒体 联盟 意欲何为 开发产品 研发产品 CEO 恋情 硬件 逃生 体验 畅想 红海 手机 增长 消失 淘点点 商家 商铺 通信领域 专利 市场份额 格局 新媒体 基金 盈利 BAT 在线旅游 战略合作 消费者 O2O SocialCRM 市值 20亿 推荐 上市 手游 调查数据 劲霸男装 移动生活 诚信 第三方支付 软肋 夜店 小女生 二维码 绞杀 快捷支付 支票 里程碑 网购 赚钱 千元机 市场化 华尔街 沙龙 媒体见面会 开放 下载 纠集 大会 90后 70后 80后 工行 IPO 野心 总裁 零售 百货 逆袭 估值 信用卡 整合 少林寺 试验品 课堂 案例 演讲 分发渠道 游戏平台 开房 身份证 cvv CVV 移动支付 MH370 速递 学大  TOP10 陨落 餐饮 360智键 猪猪侠 信任 趋势 社交媒体 智能路由器 教育 无人机 选人 用人 留人 法则 深度 风云人物 年营收 娱乐宝 R2Games 贾瑞德 欧美市场 虚拟运营商 Yelp SoLoMo 愚人节|,
 }
 class ContentController < ApplicationController
-
+#before_filter :authenticate_user! 
 private
 	def get_category(title, desc)
 		cats = {}
@@ -77,7 +77,7 @@ private
 	
 public
 
-  def all
+  def check
   	day = Time.now.strftime("%Y-%m-%d 00:00:00")
   	puts day
   	@contents = get_contents("created_at>='#{day}' and id not in (SELECT content_id from ipvotes where ip='#{request.remote_ip}')")
@@ -110,7 +110,13 @@ public
   end
 
   def index
+    @contents = get_contents(:published => 1)
+  end
+
+  def all
   	@contents = get_contents()
+    @title = "所有"
+    render(:action => 'index')    
   end
 
   def bigbrother
