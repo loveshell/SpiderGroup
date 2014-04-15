@@ -21,6 +21,7 @@ module Website
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.i18n.default_locale = "zh-CN".to_sym
 
     config.action_mailer.raise_delivery_errors = true     #注意，在development.rb下需修改成true
     #添加如下几行代码
