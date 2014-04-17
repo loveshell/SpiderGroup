@@ -22,7 +22,7 @@ end
           <div class="feeds-item-detail clearfix ">
                     <% if c.cover
                        cover = c.cover
-                       cover = "/"+cover unless cover[0] == '/'
+                       cover = "/"+cover unless cover[0] == '/' || cover.include?('http://')
                     %>
            <p class="feeds-item-pic"><a href="/view/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><img src="<%=cover%>"></a></p>
                     <% end %>

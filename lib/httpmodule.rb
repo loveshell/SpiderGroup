@@ -9,6 +9,8 @@ require 'fileutils'
 require 'digest'
 require 'pathname'
 require 'base64'
+require "json"
+require "sixarm_ruby_magic_number_type"
 
 class String
   def string_between_markers marker1, marker2
@@ -17,6 +19,62 @@ class String
 end
 
 module HttpModule
+  def post_img_data_to_webscan(img_data, img_path)
+  # Token used to terminate the file in the post body. Make sure it is not
+  # present in the file you're uploading.
+  boundary = "upload_img_test_AaB03x"
+
+  uri = URI.parse("http://webscan.360.cn/timgurl/jy")
+
+  ext = img_data.magic_number_type
+  puts ext
+
+  post_body = []
+  post_body << "--#{boundary}\r\n"
+  post_body << "Content-Disposition: form-data; name=\"upfile\"; filename=\"#{File.basename(img_path)}\"\r\n"
+  post_body << "Content-Type: image/#{ext}\r\n"
+  post_body << "\r\n"
+  post_body << img_data
+  post_body << "\r\n--#{boundary}--\r\n"
+
+  http = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Post.new(uri.request_uri)
+  request.body = post_body.join
+  request["Content-Type"] = "multipart/form-data, boundary=#{boundary}"
+
+  response = http.request(request)
+  data = JSON.parse(response.body)
+  if data['error'] && data['url']
+    data['url']
+  else
+    puts data
+    nil
+  end
+end
+
+def post_img_to_webscan(img_path)
+  if img_path.length < 1 then
+    puts "error : need input a image file to send"
+    exit
+  end
+
+  img_data = File.read(img_path)
+  post_img_data_to_webscan(img_data, img_path)
+end
+
+def post_img_url_to_webscan(img_url, referer=nil)
+  #http://webscan.360.cn/timgurl/url    post  参数名:url
+  uri = URI.parse("http://webscan.360.cn/timgurl/url")
+  response = Net::HTTP.post_form(uri, 'url' => "http://proxy.fofa.so/image.php?ref=#{referer}&img=#{img_url}")
+  data = JSON.parse(response.body)
+  if data['error'] && data['url']
+    data['url']
+  else
+    puts data
+    nil
+  end
+end
+
   def get_web_content(url,ops=nil)
     @options ||= {}
     resp = {:error=>true, :errstring=>'', :code=>999, :url=>url, :html=>nil, :redirect_url=>nil}
@@ -197,6 +255,7 @@ module HttpModule
     path = File.join(File.dirname(__FILE__), '../'+@options[:img_save_path]) if @options[:img_save_path]
     FileUtils.mkdir_p path
     filename = Digest::MD5.hexdigest(abs_img_url)
+    webscan_url = ''
 
     ext = nil
     if is_img_data
@@ -211,25 +270,45 @@ module HttpModule
       if is_img_data
         base64_data = img_src["data:image/#{ext[1 .. -1]};base64,".length .. -1]
         img_data = Base64.decode64(base64_data)
-        File.open(path, "wb") do |f|
-          f.write(img_data)
-        end
-      else
-        http = get_web_content abs_img_url, referer: refer
-        if http[:error]
-          @logger.error "download img error of #{abs_img_url} from #{refer}" if @logger
+        if @options[:img_save_webscan] == 'cloud'
+          webscan_url = post_img_data_to_webscan img_data, 'imgfile'
         else
           File.open(path, "wb") do |f|
-            f.write(http[:html])
+            f.write(img_data)
+          end
+        end
+      else
+        if @options[:img_save_webscan] == 'cloud'
+          webscan_url = post_img_url_to_webscan abs_img_url, refer
+        else
+          http = get_web_content abs_img_url, referer: refer
+          if http[:error]
+            @logger.error "download img error of #{abs_img_url} from #{refer}" if @logger
+          else
+            File.open(path, "wb") do |f|
+              f.write(http[:html])
+            end
           end
         end
       end
 
     end
     #Pathname.new(path).relative_path_from(Pathname.new(File.dirname(__FILE__)+'/../website/public')).to_s
-    'imgs/'+filename
+    if @options[:img_save_webscan]
+      @logger.error "download img error of #{abs_img_url} from #{refer}" if @logger unless webscan_url
+      webscan_url
+    else
+      'imgs/'+filename
+    end
   end
 
+  def get_img_path(path)
+    if path.include? 'http://'
+      path
+    else
+      "/"+path
+    end
+  end
 
   def receive_img(img, referer)
     imgs = []
@@ -237,18 +316,18 @@ module HttpModule
     img_src = img['src']
     local_file = nil
     local_file = download_img(img_src, referer) if img_src
-    imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} if local_file
+    imgs << {:from=>img_src, :to=>get_img_path(local_file), :type=>'string_replace', :repead=>true} if local_file
 
     if img['data-original']
       img_src = img['data-original']
       local_file = download_img(img_src, referer)
-      imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
+      imgs << {:from=>img_src, :to=>get_img_path(local_file), :type=>'string_replace', :repead=>true} if local_file #处理异步加载
     end
 
     if img['data-src']
       img_src = img['data-src']
       local_file = download_img(img_src, referer)
-      imgs << {:from=>img_src, :to=>"/"+local_file, :type=>'string_replace', :repead=>true} #处理异步加载
+      imgs << {:from=>img_src, :to=>get_img_path(local_file), :type=>'string_replace', :repead=>true}  if local_file #处理异步加载
     end
 
     imgs
@@ -257,11 +336,13 @@ module HttpModule
   #分析html(Nokogiri的node类型)中得所有img标签，下载图片到本地，然后返回替换的数组
   def receive_imgs(html,referer)
     imgs = []
-    html.css('img').each {|img|
-      receive_img(img, referer).each {|i|
-        imgs << i
+    if @options[:img_save_webscan] != 'none'
+      html.css('img').each {|img|
+        receive_img(img, referer).each {|i|
+          imgs << i
+        }
       }
-    }
+    end
     imgs
   end
 end
