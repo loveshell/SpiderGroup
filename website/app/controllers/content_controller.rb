@@ -34,13 +34,15 @@ private
 		contents = []
 		if sql
 			contents = Content.where(sql).paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC') 
-  		else
-  			contents = Content.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
-  		end 
-  		contents.each { |c|
-  			c.cat = get_category(c.title, c.description)
-  		}
-  		contents
+		else
+			contents = Content.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
+		end 
+		contents.each { |c|
+			c.cat = get_category(c.title, c.description)
+      c.favorite = is_favorite(c.id) if current_user
+      c.like = is_like(c.id) if current_user
+		}
+		contents
 	end
 	
 	def render_tag(tagname, if_or=true)
@@ -79,7 +81,7 @@ public
 
   def check
   	day = Time.now.strftime("%Y-%m-%d 00:00:00")
-  	puts day
+  	#puts day
   	@contents = get_contents("created_at>='#{day}' and id not in (SELECT content_id from ipvotes where user_id='#{current_user.id}')")
   	@hot_artical = Content.find_by_sql("select * from contents join (select content_id as id, sum(vote) as vote from ipvotes where created_at>='#{day}' group by content_id ORDER BY vote desc limit 5) t on contents.id=t.id where vote>0")
   	@vote = true
@@ -110,7 +112,7 @@ public
   end
 
   def index
-    @contents = get_contents(:published => 1)
+    @contents = get_contents(:published => true)
   end
 
   def all
@@ -181,16 +183,142 @@ public
   	if request.referer
   		redirect_to request.referer
   	else
-	  redirect_to :action => 'check'
-	end
-  end
-##################
-  def view
-  	@content = Content.find(params[:id])
+  	  redirect_to :action => 'check'
+  	end
   end
 
   def word
-  	render_tag [params[:w]]
+    render_tag [params[:w]]
+  end
+##################
+
+  def new
+    @title = "投稿"
+    if !authenticate_user! 
+      render 'index'
+    end
+    #@content = Content.new
   end
 
+  def create
+    @content = Content.new(content_params)
+    if @content.save
+      redirect_to content_path(@content), notice: "The article has been successfully created."
+    else
+      render action: "new"
+    end
+  end
+
+  def show
+  	@content = Content.find(params[:id])
+    if !@content
+      #error
+    end
+  end
+
+  def edit
+    @title = "编辑文章"
+    @content = Content.find(params[:id])
+    if !authenticate_user! 
+      render 'show'
+    end
+  end
+
+  def update
+    @content = Content.find(params[:id])
+    puts content_params
+    if !authenticate_user! 
+      render 'show'
+    end
+    if @content.update(content_params)
+      redirect_to @content
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @content = Content.find(params[:id])
+    if @content.destroy
+      redirect_to :action => 'all', notice: "The article has been successfully deleted."
+    else
+      render action: "edit"
+    end
+  end
+
+  def publish
+    check_user_and_content {
+      published = !@content.published
+      if @content.update_attribute("published", published)
+        info = "发布成功！"
+        info = "取消"+info unless published
+        render json: {err:0, notice:info}
+      else
+        render json: {err:3, notice:"数据操作失败，请稍后重试！"}
+      end
+    }
+  end
+
+  def favorite
+    check_user_and_content {
+      f = Favorite.where(user_id: current_user.id, content_id:@content.id)
+      
+      if f && f.first
+        f.first.destroy
+        render json: {err:0, notice:"已取消收藏"}
+      else
+        f = Favorite.new(user_id: current_user.id, content_id:@content.id)
+        f.save
+        render json: {err:0, notice:"已收藏"}
+      end
+    }
+  end
+
+  def like
+    check_user_and_content {
+      f = Like.where(user_id: current_user.id, content_id:@content.id)
+      
+      if f && f.first
+        f.first.destroy
+        render json: {err:0, notice:"已取消赞"}
+      else
+        f = Like.new(user_id: current_user.id, content_id:@content.id)
+        f.save
+        render json: {err:0, notice:"成功点赞"}
+      end
+    }
+  end
+
+private
+  def content_params
+    params.require(:content).permit(:content, :title, :description)
+  end
+
+  def is_favorite(id)
+    f = Favorite.where(user_id: current_user.id, content_id:id)
+    f && f.first
+  end
+
+  def is_like(id)
+    f = Like.where(user_id: current_user.id, content_id:id)
+    f && f.first
+  end
+
+  def check_user_and_content()
+    begin
+      @content = Content.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      @content = nil
+    end
+
+    if !current_user
+      render json: {err: 1, errmsg: "not login"}
+    else
+      if !@content
+        render json: {err:2, errmsg:"no content"}
+      else
+        yield
+      end
+    end    
+  end
 end

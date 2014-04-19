@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield(:title) %> - LubyRuffy的天上人间</title>
+  <title><%= yield(:title) %> - 父母刊</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -9,13 +9,13 @@
 <body>
 <div id="header" alog-group="log-header">
   <div class="header-content">
-    <div id="menu"><a href="/">精华</a><a href="/all">所有</a></div>
+    <div id="menu"><a href="/">精选</a><a href="/submit">投稿</a></div>
     <div id="usrbar">
       <!--<a href="/bigbrother">互联网大企业</a>|<a href="/people">人物</a>|<a href="/security">安全</a>|<a href="/code">编程</a>|<a href="/cool">创意</a>|<a href="/webmaster">站长</a>|<a href="/newbie">杂七杂八</a>-->
       <%
         if user_signed_in?
       %>
-      <a href="/check">审核</a>|<%= link_to "退出登录", destroy_user_session_path, :method => :delete %><font color='white'><%= current_user.email %></font>
+      <a href="/check">审核</a>|<%= link_to "退出登录", destroy_user_session_path, :method => :delete %><%= link_to current_user.login, edit_user_registration_path %></font>
     <%
         else
       %>
@@ -24,7 +24,7 @@
         end
       %>
     </div>
-    <div class="top-main"><h1 class="title"><a href="/">LubyRuffy的天上人间</a></h1></div>
+    <div class="top-main"><h1 class="title"><a href="/">父母刊</a></h1></div>
   </div>  
 </div>
 

@@ -1,0 +1,37 @@
+<% content_for :title do %><%=@content.title%><% end %>
+<div id="page">
+ <h2><%=@content.title%></h2>
+ <p class="meta"><%=@content.created_at%>
+ 	<div class="bdsharebuttonbox" data-tag="share_1">
+		<a class="bds_tsina" data-cmd="tsina"></a>
+		<a class="bds_weixin" data-cmd="weixin"></a>
+		<!--<a class="bds_more" data-cmd="more">更多</a>-->
+		<a class="bds_count" data-cmd="count"></a>
+	</div>
+ </p>
+
+ <div class="post">
+ <%=raw(@content.content)%>
+ </div>
+</div>
+
+<script>
+<% 
+    if @content.cover
+	   cover = @content.cover
+	   cover = "/"+cover unless cover[0] == '/' || cover.include?('http://')
+    end
+%>
+	window._bd_share_config = {
+		common : {
+			bdText: "【<%= @content.title %>】<%= raw @content.description.strip %>",
+			bdPic : '<%=cover%>'
+		},
+		share : [{
+			"bdSize" : 24
+		}],
+	}
+
+	//以下为js加载部分
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>

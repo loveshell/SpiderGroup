@@ -1,0 +1,14 @@
+<% content_for :title do %><%=@content.title%><% end %>
+<div id="page">
+<%= javascript_include_tag "ckeditor/init" %>
+<%= form_for @content do |f| %>
+  <%= f.label :title %> : <%= f.text_field :title, :autofocus => true, :size => 80 %><br /><br />
+  <%= f.label :description %><br /><%= f.cktext_area(:description, :ckeditor =>{:toolbar=>'mini', :height=>100, :uiColor=>'#AADC6E'}) %><br />
+  <%= f.label :content %><br /><%= f.cktext_area(:content, :ckeditor =>{:uiColor=>'#d5dfe8'}) %><br />
+  <%= f.submit %>
+<% end %>
+
+  <p class="meta"><%=@content.created_at%></p>
+  <%= link_to "删除", @content, :method=>:delete %>
+
+</div>

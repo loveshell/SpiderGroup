@@ -1,4 +1,5 @@
 Website::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -7,7 +8,6 @@ Website::Application.routes.draw do
   root 'content#index'
   get 'check' => 'content#check'
   get 'all' => 'content#all'
-  get 'view/:id' => 'content#view'
   get 'bigbrother' => 'content#bigbrother'
   get 'newbie' => 'content#newbie'
   get 'people' => 'content#people'
@@ -28,6 +28,14 @@ Website::Application.routes.draw do
 
   get 'vote' => 'content#vote'
   get 'word' => 'content#word'
+
+  post 'publish' => 'content#publish'
+  post 'favorite' => 'content#favorite'
+  post 'like' => 'content#like'
+  get 'submit' => 'content#new'
+  post 'submit' => 'content#create'
+
+  resources :content
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

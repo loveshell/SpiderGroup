@@ -27,16 +27,26 @@ module Website
     #添加如下几行代码
     config.action_mailer.default_url_options = { :host => "localhost:3000" } #提示中有提到需要配置，即执行rails g devise:install
     config.action_mailer.delivery_method = :smtp
+
     config.action_mailer.smtp_settings = {
         :address => "smtp.exmail.qq.com",  #smtp.qq.com
         :port => 465,
         :domain => "haoyey.com",   #qq.com
         :authentication => :login,
         :user_name => "root@haoyey.com", #修改邮箱
-        :password => "Xd1tks!", #修改正确的密码
+        :password => "xxx", #修改正确的密码
         :tls => true,
         :enable_starttls_auto => true  
       }   
 
+=begin
+    config.action_mailer.smtp_settings = {
+        :address => "220.181.158.217",  #smtp.qq.com
+        :port => 25,
+        :domain => "haoyey.com",   #qq.com
+      }   
+=end
+    
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end

@@ -18,23 +18,33 @@ end
       end
         @contents.each {|c|%>
           <div class="feeds-item">
-          <h3><a href="/view/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><%=c.title%></a></h3>
+          <h3><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><%=c.title%></a></h3>
           <div class="feeds-item-detail clearfix ">
                     <% if c.cover
                        cover = c.cover
                        cover = "/"+cover unless cover[0] == '/' || cover.include?('http://')
                     %>
-           <p class="feeds-item-pic"><a href="/view/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><img src="<%=cover%>"></a></p>
+           <p class="feeds-item-pic"><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><img src="<%=cover%>"></a></p>
                     <% end %>
-                    <p class="feeds-item-text"><%=raw(c.description)%><a href="/view/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more">[详细]</a> </p>
+                    <p class="feeds-item-text"><%=raw(c.description)%><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more">[详细]</a> </p>
                  <p class="feeds-item-info">
                     <span><%=c.created_at%> </span>
                     <span>来源：<a href="/<%=c.source%>"><%=c.source%></a></span>
+                    <!--
                     <% if c.cat 
                       c.cat.each_key {|category| %>
                     <a href="/<%=category%>"><%=category%></a>
                     <% } 
                     end%>
+                    -->
+                    <% if current_user %>
+                    <%= link_to "编辑", edit_content_path(c) %> | 
+                    <% if c.published %>
+                      <%= link_to "取消发布", 'javascript:publish('+c.id.to_s+')', id:"publish_#{c.id}"%>
+                    <% else %>
+                    <%= link_to "发布", 'javascript:publish('+c.id.to_s+')', id:"publish_#{c.id}" %> 
+                    <% end %>
+                    <% end %>
                  </p>   
                  <% if @vote %>
                  <p class="feeds-item-info">
@@ -44,12 +54,24 @@ end
                  </p>
                 <% end %>
                  <p class="feeds-item-info">
+                  <!--
                   <% if c.cat 
                     c.cat.each {|category,keys| 
                     keys.each{|k|%>
                   <a href="/word/?w=<%=k%>"><%=k%></a>
                   <% }} 
                   end%>
+                  -->
+                  <% if c.favorite %>
+                    <%= link_to "取消收藏", 'javascript:favorite('+c.id.to_s+')', id:"favorite_#{c.id}"%>
+                  <% else %>
+                  <%= link_to "收藏", 'javascript:favorite('+c.id.to_s+')', id:"favorite_#{c.id}" %> 
+                  <% end %>
+                  <% if c.like %>
+                    <%= link_to "取消赞", 'javascript:like('+c.id.to_s+')', id:"like_#{c.id}"%>
+                  <% else %>
+                  <%= link_to "赞", 'javascript:like('+c.id.to_s+')', id:"like_#{c.id}" %> 
+                  <% end %>
                  </p>
              </div>
            </div>
@@ -57,7 +79,7 @@ end
     </div>
     <!-- 分页链接 -->
     <div class="pull-right pages">
-      <%=will_paginate(@contents, :prev_label=>'上一页', :next_label=>'下一页', :separator=>" | ") %>  
+      <%=will_paginate(@contents, :prev_label=>'<', :next_label=>'>', :separator=>" | ") %>  
     </div>
 
 </div>

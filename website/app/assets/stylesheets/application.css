@@ -229,7 +229,7 @@ a:visited {
     border: 1px solid #dee0e2;
     border-radius: 2px;
     background: -webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#f0f1f1));
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f1f1');
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f1f1');
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f1f1')";
     background: #fff;
     background: -moz-linear-gradient(top, #fff, #f0f1f1);
@@ -251,7 +251,7 @@ a:visited {
 
 #feeds_more a:hover {
     background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f0f1f1), to(#fff));
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f0ffff', endColorstr='#ffffff');
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0ffff', endColorstr='#ffffff');
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f1f1', endColorstr='#ffffff')";
     background: #f0f1f1;
     background: -moz-linear-gradient(top, #f0f1f1, #fff);
@@ -330,13 +330,13 @@ a:visited {
     display: inline-block;
     width: 60px;
     padding-left: 20px;
-    background: url(/static/images/share_normal_btn.png) no-repeat left center;
+    /*background: url(/static/images/share_normal_btn.png) no-repeat left center;*/
     text-align: left;
     color: #bbb
 }
 
 .feeds-item .feeds-item-info span a:hover {
-    background: url(/static/images/share_active_btn.png) no-repeat left center;
+    /*background: url(/static/images/share_active_btn.png) no-repeat left center;*/
     color: #3a83b8;
     text-decoration: none
 }
@@ -848,7 +848,7 @@ h3 {
     height: 25px;
     vertical-align: -7px;
     width: 25px;
-    *zoom: 1
+    *zoom: 1;
     float: right;
 }
 

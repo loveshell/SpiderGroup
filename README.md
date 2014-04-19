@@ -21,7 +21,7 @@ SpiderGroup 站群抓取服务
 ###### 一些细则要求：
 * 可以根据URL，标题关键字，正文关键字等信息设置filter（正则）
 * 可以设置替换的正则表达式数组（比如freebuf后面会加入一段版权的话需要去除）
-* 增加图片链接保存替换功能
+* 增加图片链接保存替换功能(可以保存本地或者网络云存储)
 * 基本信息包括：标题，url，正文，作者，发布时间，概要，封面图片
 * 可以提取异步加载的图片（比如制定data-original，data-src等)
 * 可以提取img src中数据为base64格式的图片
@@ -29,6 +29,20 @@ SpiderGroup 站群抓取服务
 * 支持网络代理
 
 ###### 运行：
-1. 新建cron任务，crontab -e加入执行，建议每30分钟执行一次daemon.sh
+1. bundle install
+2. rake db:migrate
+3. 新建cron任务，crontab -e加入执行，建议每30分钟执行一次daemon.sh
   如果不需要定期执行，也可以手动执行./spidergroup all
-2. cd website && unicorn_rails 运行看效果
+4. cd website && unicorn_rails 运行看效果
+
+
+###### 网站功能介绍：
+1. 入库文章在published置1后显示(ok)
+2. 支持多用户登陆(用户名，头像)
+3. 支持编辑器(ok)
+4. 用户支持权限等级
+5. 支持收藏(ok)
+6. 支持分享转发(ok)
+7. 支持赞(ok)
+8. 支持审核
+9. 微博，qq等形式登陆

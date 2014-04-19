@@ -14,3 +14,47 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require ckeditor/override
+//= require ckeditor/init
+//= require ckeditor/config
+
+function post_id(id, route, rawtext, oktext)
+{
+	$.post(route, { id: id}, function(data) {
+	  if (data.errmsg) 
+	  {
+	  	$(".alert").html(data.errmsg);
+	  	$(".alert").show();
+	  }
+	  else
+	  {
+	  	$(".notice").html(data.notice);
+	  	$(".notice").show();
+	  	$cid = $("#"+route+"_"+id);
+	  	if($cid[0].innerHTML == rawtext)
+	  	{
+	  		$cid.html(oktext);
+	  	}
+	  	else
+	  	{
+	  		$cid.html(rawtext);	
+	  	}
+	  }
+
+	});
+}
+
+function publish(id)
+{
+	post_id(id, "publish", "发布", "取消发布")
+}
+
+function favorite(id)
+{
+	post_id(id, "favorite", "收藏", "取消收藏")
+}
+
+function like(id)
+{
+	post_id(id, "like", "赞", "取消赞")
+}
