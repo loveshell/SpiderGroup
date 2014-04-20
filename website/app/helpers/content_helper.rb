@@ -1,2 +1,3 @@
 module ContentHelper
+
 end

@@ -6,6 +6,7 @@ require 'yaml'
 $:.unshift(File.expand_path(File.dirname(__FILE__)))
 .unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
 .unshift(File.expand_path(File.join(File.dirname(__FILE__), 'spider')))
+.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'website/app/models')))
 require 'db_manager'
 
 #解析参数

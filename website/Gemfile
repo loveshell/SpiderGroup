@@ -55,3 +55,6 @@ gem 'rolify'
 
 gem 'ckeditor'
 gem 'paperclip'
+gem 'nokogiri'
+gem 'guess_html_encoding'
+gem "sixarm_ruby_magic_number_type"

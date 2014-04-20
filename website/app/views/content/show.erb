@@ -2,6 +2,16 @@
 <div id="page">
  <h2><%=@content.title%></h2>
  <p class="meta"><%=@content.created_at%>
+   <% if current_user %>
+       <% if can? :manage, :Content %>
+           <%= link_to "编辑", edit_content_path(@content) %>|
+           <% if @content.published %>
+               <%= link_to "取消发布", 'javascript:publish('+@content.id.to_s+')', id:"publish_#{@content.id}"%>
+           <% else %>
+               <%= link_to "发布", 'javascript:publish('+@content.id.to_s+')', id:"publish_#{@content.id}" %>
+           <% end %>
+       <% end %>
+   <% end %>
  	<div class="bdsharebuttonbox" data-tag="share_1">
 		<a class="bds_tsina" data-cmd="tsina"></a>
 		<a class="bds_weixin" data-cmd="weixin"></a>

@@ -32,14 +32,14 @@ module ReplaceParser
   def replace_by_type(replace_list, rawstr)
     str = rawstr.dup()
     replace_list.each{|r|
-      if r[:from] and r[:from].size>0
+      if r[:from] && r[:from].size>0
         case r[:type]
           when "replace_to_end"
             str[str.index(r[:from])..str.size-1]  = r[:to] if str.index(r[:from])
           when "replace_to_position"
             str[0..str.index(r[:from])-1] = r[:to] if str.index(r[:from])
           when "string_replace"
-            while str.index(r[:from])
+            while str.index(r[:from]) && (r[:from] != r[:to])
               str[r[:from]] = r[:to]
               break unless r[:repead]
             end

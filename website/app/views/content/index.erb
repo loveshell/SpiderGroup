@@ -29,7 +29,7 @@ end
                     <p class="feeds-item-text"><%=raw(c.description)%><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more">[详细]</a> </p>
                  <p class="feeds-item-info">
                     <span><%=c.created_at%> </span>
-                    <span>来源：<a href="/<%=c.source%>"><%=c.source%></a></span>
+                    <!--<span>来源：<a href="/<%=c.source%>"><%=c.source%></a></span>-->
                     <!--
                     <% if c.cat 
                       c.cat.each_key {|category| %>
@@ -38,12 +38,14 @@ end
                     end%>
                     -->
                     <% if current_user %>
-                    <%= link_to "编辑", edit_content_path(c) %> | 
-                    <% if c.published %>
-                      <%= link_to "取消发布", 'javascript:publish('+c.id.to_s+')', id:"publish_#{c.id}"%>
-                    <% else %>
-                    <%= link_to "发布", 'javascript:publish('+c.id.to_s+')', id:"publish_#{c.id}" %> 
-                    <% end %>
+                       <% if can? :manage, :Content %>
+                        <%= link_to "编辑", edit_content_path(c) %>|
+                        <% if c.published %>
+                          <%= link_to "取消发布", 'javascript:publish('+c.id.to_s+')', id:"publish_#{c.id}"%>
+                        <% else %>
+                        <%= link_to "发布", 'javascript:publish('+c.id.to_s+')', id:"publish_#{c.id}" %>
+                        <% end %>
+                      <% end %>
                     <% end %>
                  </p>   
                  <% if @vote %>
@@ -62,15 +64,20 @@ end
                   <% }} 
                   end%>
                   -->
-                  <% if c.favorite %>
-                    <%= link_to "取消收藏", 'javascript:favorite('+c.id.to_s+')', id:"favorite_#{c.id}"%>
+                  <% if can? :favorite, :Content %>
+                      <% if c.favorite %>
+                        <%= link_to "取消收藏", 'javascript:favorite('+c.id.to_s+')', id:"favorite_#{c.id}"%>
+                      <% else %>
+                      <%= link_to "收藏", 'javascript:favorite('+c.id.to_s+')', id:"favorite_#{c.id}" %>
+                      <% end %>
+                      <% if c.like %>
+                        <%= link_to "取消赞", 'javascript:like('+c.id.to_s+')', id:"like_#{c.id}"%>
+                      <% else %>
+                      <%= link_to "赞", 'javascript:like('+c.id.to_s+')', id:"like_#{c.id}" %>
+                      <% end %>
                   <% else %>
-                  <%= link_to "收藏", 'javascript:favorite('+c.id.to_s+')', id:"favorite_#{c.id}" %> 
-                  <% end %>
-                  <% if c.like %>
-                    <%= link_to "取消赞", 'javascript:like('+c.id.to_s+')', id:"like_#{c.id}"%>
-                  <% else %>
-                  <%= link_to "赞", 'javascript:like('+c.id.to_s+')', id:"like_#{c.id}" %> 
+                       <%= link_to "收藏", '/favoritelogin/'+c.id.to_s %>
+                       <%= link_to "赞", '/likelogin/'+c.id.to_s %>
                   <% end %>
                  </p>
              </div>

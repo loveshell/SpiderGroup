@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
+  rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :authentication_keys => [:login]
-  
-  validates :username, :uniqueness => {:case_sensitive => false}
+         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
+          #, :confirmable 暂时不验证邮箱了
+
+      validates :username, :uniqueness => {:case_sensitive => false}
 
   #attr_accessor :login
 

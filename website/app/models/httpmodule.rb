@@ -20,62 +20,63 @@ end
 
 module HttpModule
   def post_img_data_to_webscan(img_data, img_path)
-  # Token used to terminate the file in the post body. Make sure it is not
-  # present in the file you're uploading.
-  boundary = "upload_img_test_AaB03x"
+    # Token used to terminate the file in the post body. Make sure it is not
+    # present in the file you're uploading.
+    boundary = "upload_img_test_AaB03x"
 
-  uri = URI.parse("http://webscan.360.cn/timgurl/jy")
+    uri = URI.parse("http://webscan.360.cn/timgurl/jy")
 
-  ext = img_data.magic_number_type
-  puts ext
+    ext = img_data.magic_number_type
+    puts ext
 
-  post_body = []
-  post_body << "--#{boundary}\r\n"
-  post_body << "Content-Disposition: form-data; name=\"upfile\"; filename=\"#{File.basename(img_path)}\"\r\n"
-  post_body << "Content-Type: image/#{ext}\r\n"
-  post_body << "\r\n"
-  post_body << img_data
-  post_body << "\r\n--#{boundary}--\r\n"
+    post_body = []
+    post_body << "--#{boundary}\r\n"
+    post_body << "Content-Disposition: form-data; name=\"upfile\"; filename=\"#{File.basename(img_path)}\"\r\n"
+    post_body << "Content-Type: image/#{ext}\r\n"
+    post_body << "\r\n"
+    post_body << img_data
+    post_body << "\r\n--#{boundary}--\r\n"
 
-  http = Net::HTTP.new(uri.host, uri.port)
-  request = Net::HTTP::Post.new(uri.request_uri)
-  request.body = post_body.join
-  request["Content-Type"] = "multipart/form-data, boundary=#{boundary}"
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.body = post_body.join
+    request["Content-Type"] = "multipart/form-data, boundary=#{boundary}"
 
-  response = http.request(request)
-  data = JSON.parse(response.body)
-  if data['error'] && data['url']
-    data['url']
-  else
-    puts data
-    nil
-  end
-end
-
-def post_img_to_webscan(img_path)
-  if img_path.length < 1 then
-    puts "error : need input a image file to send"
-    exit
+    response = http.request(request)
+    data = JSON.parse(response.body)
+    if data['error'] && data['url']
+      data['url']
+    else
+      puts data
+      nil
+    end
   end
 
-  img_data = File.read(img_path)
-  post_img_data_to_webscan(img_data, img_path)
-end
+  def post_img_to_webscan(img_path)
+    if img_path.length < 1 then
+      puts "error : need input a image file to send"
+      exit
+    end
 
-def post_img_url_to_webscan(img_url, referer=nil)
-  #http://webscan.360.cn/timgurl/url    post  参数名:url
-  uri = URI.parse("http://webscan.360.cn/timgurl/url")
-  url = "http://proxy.fofa.so/image.php?ref=#{URI.encode(referer)}&img=#{URI.encode(img_url)}"
-  response = Net::HTTP.post_form(uri, 'url' => url)
-  puts url
-  data = JSON.parse(response.body)
-  if data['error'] && data['url']
-    data['url']
-  else
-    puts data
-    nil
+    img_data = File.read(img_path)
+    post_img_data_to_webscan(img_data, img_path)
   end
-end
+
+  def post_img_url_to_webscan(img_url, referer=nil)
+    return img_url if img_url.include? "qhimg.com"
+    #http://webscan.360.cn/timgurl/url    post  参数名:url
+    uri = URI.parse("http://webscan.360.cn/timgurl/url")
+    url = "http://proxy.fofa.so/image.php?ref=#{URI.encode(referer)}&img=#{URI.encode(img_url)}"
+    response = Net::HTTP.post_form(uri, 'url' => url)
+    #puts url
+    data = JSON.parse(response.body)
+    if data['error'] && data['url']
+      data['url']
+    else
+      #puts data
+      nil
+    end
+  end
 
   def get_web_content(url,ops=nil)
     @options ||= {}
@@ -340,8 +341,9 @@ end
 
   #分析html(Nokogiri的node类型)中得所有img标签，下载图片到本地，然后返回替换的数组
   def receive_imgs(html,referer)
+    @options ||= {:img_save_mode => 'cloud'}
     imgs = []
-    if @options[:img_save_webscan] != 'none'
+    if @options[:img_save_mode] != 'none'
       html.css('img').each {|img|
         receive_img(img, referer).each {|i|
           imgs << i
@@ -349,5 +351,20 @@ end
       }
     end
     imgs
+  end
+
+  #注意：原字符串会直接替换
+  def process_img_content(str)
+    #替换图片
+    cdiv = Nokogiri::HTML(content_params[:content])
+    img_list = receive_imgs(cdiv, content_params[:url])
+    str = content_params[:content]
+    img_list.each{|r|
+      while str.index(r[:from]) && (r[:from] != r[:to])
+        str[r[:from]] = r[:to]
+        break unless r[:repead]
+      end
+    }
+    img_list
   end
 end

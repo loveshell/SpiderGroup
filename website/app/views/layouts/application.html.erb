@@ -15,7 +15,7 @@
       <%
         if user_signed_in?
       %>
-      <a href="/check">审核</a>|<%= link_to "退出登录", destroy_user_session_path, :method => :delete %><%= link_to current_user.login, edit_user_registration_path %></font>
+      <a href="/check">审核</a>|<a href="/all">所有文章</a>|<%= link_to "退出登录", destroy_user_session_path, :method => :delete %><%= link_to current_user.login, edit_user_registration_path %></font>
     <%
         else
       %>
@@ -30,7 +30,7 @@
 
 <div class="clearfix" id="body">
   <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <p class="alert" style="color:red;"><%= alert %></p>
   <%= yield %>
 </div>
 

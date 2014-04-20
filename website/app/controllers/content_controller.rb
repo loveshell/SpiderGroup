@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require 'httpmodule.rb'
+
 $tags = {
 "bigbrother" => %w|腾讯 百度 新浪 华为 阿里 牌照 金融 微信 来往 微软 谷歌 京东 美团 特斯拉 中国移动 中国联通 电信 大众点评 酒仙网 银联 IBM HP 余额宝 央行 土豆 1号店 苹果 英特尔 4G 中兴 九城 YY 小米 红米 MIUI Google 海尔 微博 携程 赶集 58同城 金钱豹 支付宝 银行 Facebook 星巴克 联想 HTC 蓝港在线 Azure 网易 新东方 优酷 youku LTE 亚马逊 500彩票网 网龙 淘宝 艺龙 如家 汉庭 Line KaKaoTalk WhatsApp 百合网 陌陌 步步高 天弘基金 当当 银泰|,
 "people" => %w|王小川 周鸿祎 俞敏洪 柳传志 陈年 刘强东 马云 朱骏 孙正义 李彦宏 姚劲波 傅盛 雷军 张朝阳 王峰 朱新礼 杨守彬 丁磊 马化腾 徐小平 鬼脚七 扎克伯格 乔布斯 唐岩 纳德拉|,
@@ -12,9 +14,46 @@ $tags = {
 "webmaster" => %w|建站 站长 SEO 网站加速 网站安全 网赚 wordpress dedecms 卢松松|,
 "other" => %w|马来西亚 马航 航空 广电 互联网思维 互联网 颠覆 革命 疑云 发布 高端 产品定位 自救 企业 实战 公众号 好文 小马哥 鲶鱼 股东 复兴 技术 专家 无家可归 DNS 智能手机 智能手表 物联网 智能电视 智能家居 智能硬件 汽车 世界杯 电视 危机 死亡 监管 体制 搅局 建班子 定战略 带队伍 研究 众筹 泼点冷水 泼冷水 股份 百亿 10亿 黑马 iPhone iPad Mac 大屏 谍照 靠谱 自媒体 联盟 意欲何为 开发产品 研发产品 CEO 恋情 硬件 逃生 体验 畅想 红海 手机 增长 消失 淘点点 商家 商铺 通信领域 专利 市场份额 格局 新媒体 基金 盈利 BAT 在线旅游 战略合作 消费者 O2O SocialCRM 市值 20亿 推荐 上市 手游 调查数据 劲霸男装 移动生活 诚信 第三方支付 软肋 夜店 小女生 二维码 绞杀 快捷支付 支票 里程碑 网购 赚钱 千元机 市场化 华尔街 沙龙 媒体见面会 开放 下载 纠集 大会 90后 70后 80后 工行 IPO 野心 总裁 零售 百货 逆袭 估值 信用卡 整合 少林寺 试验品 课堂 案例 演讲 分发渠道 游戏平台 开房 身份证 cvv CVV 移动支付 MH370 速递 学大  TOP10 陨落 餐饮 360智键 猪猪侠 信任 趋势 社交媒体 智能路由器 教育 无人机 选人 用人 留人 法则 深度 风云人物 年营收 娱乐宝 R2Games 贾瑞德 欧美市场 虚拟运营商 Yelp SoLoMo 愚人节|,
 }
+
 class ContentController < ApplicationController
+  include HttpModule
+
+  NO_PRIVILEGE = "无权限操作，请联系管理员"
+
 #before_filter :authenticate_user! 
 private
+  def content_params
+    params.require(:content).permit(:content, :title, :description, :url)
+  end
+
+  def is_favorite(id)
+    f = Favorite.where(user_id: current_user.id, content_id:id)
+    f && f.first
+  end
+
+  def is_like(id)
+    f = Like.where(user_id: current_user.id, content_id:id)
+    f && f.first
+  end
+
+  def check_user_and_content()
+    begin
+      @content = Content.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      @content = nil
+    end
+
+    if !current_user
+      render json: {err: 1, errmsg: "未登录，请在登录后再进行操作！"}
+    else
+      if !@content
+        render json: {err:2, errmsg:"没有该文章内容！"}
+      else
+        yield
+      end
+    end
+  end
+
 	def get_category(title, desc)
 		cats = {}
 		$tags.each {|k,v|
@@ -76,7 +115,7 @@ private
   def countSubstrings str, subStr
     return str.scan(subStr).length
   end
-	
+
 public
 
   def check
@@ -201,7 +240,13 @@ public
   end
 
   def create
+    img_list = process_img_content(content_params[:content])
+
     @content = Content.new(content_params)
+    if !@content[:cover] && img_list.size>0
+      @content[:cover] = img_list[0][:to] #第一张图片作为封面
+    end
+
     if @content.save
       redirect_to content_path(@content), notice: "The article has been successfully created."
     else
@@ -218,18 +263,35 @@ public
 
   def edit
     @title = "编辑文章"
+
     @content = Content.find(params[:id])
-    if !authenticate_user! 
-      render 'show'
+    if !authenticate_user!
+      redirect_to @content
+    else
+      begin
+        authorize! :edit, @content
+      rescue CanCan::AccessDenied => e
+        redirect_to @content
+      end
     end
+
   end
 
   def update
+
     @content = Content.find(params[:id])
-    puts content_params
-    if !authenticate_user! 
-      render 'show'
+    if !authenticate_user!
+      redirect_to @content
+    else
+      begin
+        authorize! :update, @content
+      rescue CanCan::AccessDenied => e
+        redirect_to @content
+      end
     end
+
+    img_list = process_img_content(content_params[:content])
+
     if @content.update(content_params)
       redirect_to @content
     else
@@ -238,9 +300,15 @@ public
   end
 
   def destroy
+    begin
+      authorize! :update, @content
+    rescue CanCan::AccessDenied => e
+      redirect_to @content
+    end
+
     @content = Content.find(params[:id])
     if @content.destroy
-      redirect_to :action => 'all', notice: "The article has been successfully deleted."
+      redirect_to :action => 'index', notice: "The article has been successfully deleted."
     else
       render action: "edit"
     end
@@ -248,13 +316,23 @@ public
 
   def publish
     check_user_and_content {
-      published = !@content.published
-      if @content.update_attribute("published", published)
-        info = "发布成功！"
-        info = "取消"+info unless published
-        render json: {err:0, notice:info}
-      else
-        render json: {err:3, notice:"数据操作失败，请稍后重试！"}
+      error = false
+      begin
+        authorize! :publish, @content
+      rescue CanCan::AccessDenied => e
+        render json: {err:3, errmsg:NO_PRIVILEGE}
+        error = true
+      end
+
+      if !error
+        published = !@content.published
+        if @content.update_attribute("published", published)
+          info = "发布成功！"
+          info = "取消"+info unless published
+          render json: {err:0, notice:info}
+        else
+          render json: {err:3, errmsg:NO_PRIVILEGE}
+        end
       end
     }
   end
@@ -274,6 +352,29 @@ public
     }
   end
 
+  def favoritelogin
+    if authenticate_user!
+      begin
+        @content = Content.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        @content = nil
+      end
+      if !@content
+        render text: "没有该文章内容！"
+      else
+        f = Favorite.where(user_id: current_user.id, content_id:@content.id)
+
+        if f && !f.first
+          f = Favorite.new(user_id: current_user.id, content_id:@content.id)
+          f.save
+        end
+        redirect_to action:"index", notice: "已收藏！"
+      end
+    else
+      redirect_to :action=>'index', notice: "登录失败！"
+    end
+  end
+
   def like
     check_user_and_content {
       f = Like.where(user_id: current_user.id, content_id:@content.id)
@@ -289,36 +390,27 @@ public
     }
   end
 
-private
-  def content_params
-    params.require(:content).permit(:content, :title, :description)
-  end
-
-  def is_favorite(id)
-    f = Favorite.where(user_id: current_user.id, content_id:id)
-    f && f.first
-  end
-
-  def is_like(id)
-    f = Like.where(user_id: current_user.id, content_id:id)
-    f && f.first
-  end
-
-  def check_user_and_content()
-    begin
-      @content = Content.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
-      @content = nil
-    end
-
-    if !current_user
-      render json: {err: 1, errmsg: "not login"}
-    else
-      if !@content
-        render json: {err:2, errmsg:"no content"}
-      else
-        yield
+  def likelogin
+    if authenticate_user!
+      begin
+        @content = Content.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        @content = nil
       end
-    end    
+      if !@content
+        render text: "没有该文章内容！"
+      else
+        f = Like.where(user_id: current_user.id, content_id:@content.id)
+
+        if f && !f.first
+          f = Like.new(user_id: current_user.id, content_id:@content.id)
+          f.save
+        end
+        redirect_to action:"index", notice: "成功点赞！"
+      end
+    else
+      redirect_to :action=>'index', notice: "登录失败！"
+    end
   end
+
 end

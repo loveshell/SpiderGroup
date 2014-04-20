@@ -1,11 +1,14 @@
 <% content_for :title do %><%=@title%><% end %>
 <div id="page">
 <%= javascript_include_tag "ckeditor/init" %>
+  <br/>
+  <p>
 <%= form_for :content do |f| %>
-  <%= f.label :title %> : <%= f.text_field :title, :autofocus => true, :size => 80 %><br /><br />
-  <%= f.label :description %><br /><%= f.cktext_area(:description, :ckeditor =>{:toolbar=>'mini', :height=>100, :uiColor=>'#AADC6E'}) %><br />
-  <%= f.label :content %><br /><%= f.cktext_area(:content, :ckeditor =>{:uiColor=>'#d5dfe8'}) %><br />
+  标题     :     <%= f.text_field :title, :autofocus => true, :size => 80 %><br /><br />
+  参考网址 : <%= f.text_field :url, :autofocus => true, :size => 80 %><br /><br />
+  概要描述<br /><%= f.cktext_area(:description, :ckeditor =>{:toolbar=>'mini', :height=>100, :uiColor=>'#AADC6E'}) %><br />
+  正文<br /><%= f.cktext_area(:content, :ckeditor =>{:uiColor=>'#d5dfe8'}) %><br />
   <%= f.submit %>
 <% end %>
-
+  </p>
 </div>

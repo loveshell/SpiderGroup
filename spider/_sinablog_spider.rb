@@ -59,6 +59,9 @@ class SinablogSpider < BaseSpider
       if @options[:image]
         #提取所有图片
         img_list = receive_imgs(cdiv, u[:url])
+        if !u[:cover] && img_list.size>0
+          u[:cover] = img_list[0][:to] #第一张图片作为封面
+        end
         u[:content] = replace_by_type(img_list, u[:content])
       end
 

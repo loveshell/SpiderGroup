@@ -20,7 +20,7 @@
 
 function post_id(id, route, rawtext, oktext)
 {
-	$.post(route, { id: id}, function(data) {
+	$.post("/"+route, { id: id}, function(data) {
 	  if (data.errmsg) 
 	  {
 	  	$(".alert").html(data.errmsg);
