@@ -58,3 +58,4 @@ function like(id)
 {
 	post_id(id, "like", "赞", "取消赞")
 }
+

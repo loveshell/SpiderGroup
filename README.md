@@ -29,11 +29,11 @@ SpiderGroup 站群抓取服务
 * 支持网络代理
 
 ###### 运行：
-1. bundle install
-2. rake db:migrate
+1. cd website
+2. bundle install
 3. 新建cron任务，crontab -e加入执行，建议每30分钟执行一次daemon.sh
   如果不需要定期执行，也可以手动执行./spidergroup all
-4. cd website && unicorn_rails 运行看效果
+4. unicorn_rails 运行看效果
 
 
 ###### 网站功能介绍：

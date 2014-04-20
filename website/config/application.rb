@@ -25,7 +25,7 @@ module Website
 
     config.action_mailer.raise_delivery_errors = true     #注意，在development.rb下需修改成true
     #添加如下几行代码
-    config.action_mailer.default_url_options = { :host => "localhost:3000" } #提示中有提到需要配置，即执行rails g devise:install
+    config.action_mailer.default_url_options = { :host => "kan.haoyey.com" } #提示中有提到需要配置，即执行rails g devise:install
     config.action_mailer.delivery_method = :smtp
 
     config.action_mailer.smtp_settings = {
@@ -33,11 +33,12 @@ module Website
         :port => 465,
         :domain => "haoyey.com",   #qq.com
         :authentication => :login,
-        :user_name => "root@haoyey.com", #修改邮箱
+        :user_name => "noreply@haoyey.com", #修改邮箱
         :password => "xxx", #修改正确的密码
         :tls => true,
         :enable_starttls_auto => true  
-      }   
+    }   
+    ActionMailer::Base.default :from => "noreply@haoyey.com"
 
 =begin
     config.action_mailer.smtp_settings = {
