@@ -5,7 +5,7 @@ require 'logger'
 class BaseSpider
   include HttpModule
   include ReplaceParser
-  attr_reader :url, :name, :logger, :options, :list_url
+  attr_reader :url, :name, :logger, :options, :list_url, :category
 
   def initialize(*args)
     @logger ||= Logger.new(STDOUT)

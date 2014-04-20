@@ -16,7 +16,13 @@
 </div>
 
 <script>
-<% 
+<%
+
+def mini_str(str)
+    str.gsub!(/[\n \t\r]/m, '')
+    str
+end
+
     if @content.cover
 	   cover = @content.cover
 	   cover = "/"+cover unless cover[0] == '/' || cover.include?('http://')
@@ -24,7 +30,7 @@
 %>
 	window._bd_share_config = {
 		common : {
-			bdText: "【<%= @content.title %>】<%= raw @content.description.strip %>",
+			bdText: "【<%= @content.title %>】<%= raw mini_str(@content.description) %>",
 			bdPic : '<%=cover%>'
 		},
 		share : [{

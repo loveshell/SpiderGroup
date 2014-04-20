@@ -33,7 +33,12 @@ SpiderGroup 站群抓取服务
 2. bundle install
 3. 新建cron任务，crontab -e加入执行，建议每30分钟执行一次daemon.sh
   如果不需要定期执行，也可以手动执行./spidergroup all
-4. unicorn_rails 运行看效果
+4. rake db:migrate
+5. unicorn_rails 运行看效果
+6. 如果有用户注册，记得配置website/config/application.rb里面的邮件账号
+
+如果是生产环境，记得修改website/config/database.yml配置数据库连接，并且执行：
+rake assets:precompile RAILS_ENV=production
 
 
 ###### 网站功能介绍：

@@ -65,7 +65,9 @@ end
 def post_img_url_to_webscan(img_url, referer=nil)
   #http://webscan.360.cn/timgurl/url    post  参数名:url
   uri = URI.parse("http://webscan.360.cn/timgurl/url")
-  response = Net::HTTP.post_form(uri, 'url' => "http://proxy.fofa.so/image.php?ref=#{referer}&img=#{img_url}")
+  url = "http://proxy.fofa.so/image.php?ref=#{URI.encode(referer)}&img=#{URI.encode(img_url)}"
+  response = Net::HTTP.post_form(uri, 'url' => url)
+  puts url
   data = JSON.parse(response.body)
   if data['error'] && data['url']
     data['url']
@@ -266,35 +268,38 @@ end
 
     filename += ext if ext
     path = File.join(path, filename)
-    if !File.exists? path
-      if is_img_data
-        base64_data = img_src["data:image/#{ext[1 .. -1]};base64,".length .. -1]
-        img_data = Base64.decode64(base64_data)
-        if @options[:img_save_webscan] == 'cloud'
-          webscan_url = post_img_data_to_webscan img_data, 'imgfile'
-        else
+
+    if is_img_data
+      base64_data = img_src["data:image/#{ext[1 .. -1]};base64,".length .. -1]
+      img_data = Base64.decode64(base64_data)
+      if @options[:img_save_mode] == 'cloud'
+        webscan_url = post_img_data_to_webscan img_data, 'imgfile'
+      else
+        if !File.exists? path
           File.open(path, "wb") do |f|
             f.write(img_data)
           end
         end
+      end
+    else
+      if @options[:img_save_mode] == 'cloud'
+        webscan_url = post_img_url_to_webscan abs_img_url, refer
       else
-        if @options[:img_save_webscan] == 'cloud'
-          webscan_url = post_img_url_to_webscan abs_img_url, refer
+        http = get_web_content abs_img_url, referer: refer
+        if http[:error]
+          @logger.error "download img error of #{abs_img_url} from #{refer}" if @logger
         else
-          http = get_web_content abs_img_url, referer: refer
-          if http[:error]
-            @logger.error "download img error of #{abs_img_url} from #{refer}" if @logger
-          else
+          if !File.exists? path
             File.open(path, "wb") do |f|
               f.write(http[:html])
             end
           end
         end
       end
-
     end
+
     #Pathname.new(path).relative_path_from(Pathname.new(File.dirname(__FILE__)+'/../website/public')).to_s
-    if @options[:img_save_webscan]
+    if  @options[:img_save_mode] == 'cloud'
       @logger.error "download img error of #{abs_img_url} from #{refer}" if @logger unless webscan_url
       webscan_url
     else
@@ -313,22 +318,22 @@ end
   def receive_img(img, referer)
     imgs = []
     #ap img
+
+    img_raw_src = img['src']
+
+    %w|data-original data-src real_src|.each{ |k|
+      if img[k]
+        img_src = img[k]
+        local_file = download_img(img_src, referer)
+        imgs << {:from=>img_src, :to=>get_img_path(local_file), :type=>'string_replace', :repead=>true} if local_file #处理异步加载
+        imgs << {:from=>img_raw_src, :to=>get_img_path(local_file), :type=>'string_replace', :repead=>true} if local_file #处理异步加载
+      end
+    }
+
     img_src = img['src']
     local_file = nil
     local_file = download_img(img_src, referer) if img_src
     imgs << {:from=>img_src, :to=>get_img_path(local_file), :type=>'string_replace', :repead=>true} if local_file
-
-    if img['data-original']
-      img_src = img['data-original']
-      local_file = download_img(img_src, referer)
-      imgs << {:from=>img_src, :to=>get_img_path(local_file), :type=>'string_replace', :repead=>true} if local_file #处理异步加载
-    end
-
-    if img['data-src']
-      img_src = img['data-src']
-      local_file = download_img(img_src, referer)
-      imgs << {:from=>img_src, :to=>get_img_path(local_file), :type=>'string_replace', :repead=>true}  if local_file #处理异步加载
-    end
 
     imgs
   end

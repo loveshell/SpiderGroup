@@ -3,7 +3,8 @@ require 'optparse'
 require 'yaml'
 
 #将当前根目录作为库加载目录
-$:.unshift(File.expand_path(File.dirname(__FILE__))).unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
+$:.unshift(File.expand_path(File.dirname(__FILE__)))
+.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
 .unshift(File.expand_path(File.join(File.dirname(__FILE__), 'spider')))
 require 'db_manager'
 
@@ -40,7 +41,7 @@ class OptsConsole
         Dir["./spider/*_spider.rb"].each do |file|
           f = File.split(file)[1]
           f = f[0..f.index("_spider")-1]
-          puts f
+          puts f unless f[0] == '_'
         end
         puts "===============All source==============="
         exit
@@ -48,6 +49,11 @@ class OptsConsole
 
       opts.on("-p", "--page <page>", "Spider page count, DEFAULT=1") do |p|
         options[:page] = p.to_i
+      end
+
+      opts.on("-t", "--tag <tag>", "Spider tag filter, like 'education', spider all by default") do |t|
+        options[:tag] = t
+        #p options
       end
 
       opts.on("-e", "--level <level>", "Log level, DEFAULT=0 (0 error; 1 info; 2 debug)") do |p|
@@ -99,17 +105,19 @@ def exec_spider(f)
     spider = Kernel.const_get(classname).new(logger: @logger, options: @options)
 
     #执行
-    spider.fetch {|u|
-      begin
-        if Content.where(url: u[:url]).exists?
-          @logger.info "content has already exists : "+u[:url]
-        else
-          Content.create(u)
+    if !@options[:tag] || (@options[:tag] && spider.category.include?(@options[:tag]))
+      spider.fetch {|u|
+        begin
+          if Content.where(url: u[:url]).exists?
+            @logger.info "content has already exists : "+u[:url]
+          else
+            Content.create(u)
+          end
+        rescue =>e
+          @logger.fatal "create content error "+u.to_s+" : "+e.to_s
         end
-      rescue =>e
-        @logger.fatal "create content error "+u.to_s+" : "+e.to_s
-      end
-    }
+      }
+    end
   end
 end
 
@@ -117,7 +125,7 @@ ARGV.each do |f|
   case f
     when 'all'
       Dir["./spider/*_spider.rb"].each do |file|
-        exec_spider file
+        exec_spider file unless File.basename(file)[0] == '_'
       end
   else
     exec_spider "./spider/"+f+"_spider.rb"
