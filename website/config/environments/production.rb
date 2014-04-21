@@ -79,9 +79,7 @@ Website::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.serve_static_assets = true
-  config.assets.precompile += Ckeditor.assets
-  config.assets.precompile += %w(ckeditor/*)
   config.assets.precompile += [ Proc.new { |path| File.basename(path) =~ /^[^_].*\.\w+$/ } ]
-  config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+
 
 end
