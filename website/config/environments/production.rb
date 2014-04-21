@@ -78,8 +78,10 @@ Website::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.serve_static_assets = true
   config.assets.precompile += Ckeditor.assets
   config.assets.precompile += %w(ckeditor/*)
   config.assets.precompile += [ Proc.new { |path| File.basename(path) =~ /^[^_].*\.\w+$/ } ]
-  config.serve_static_assets = true
+  config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+
 end

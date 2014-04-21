@@ -14,9 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require ckeditor/override
+// require ckeditor/override
 //= require ckeditor/init
-//= require ckeditor/config
+// require ckeditor/config
 
 function post_id(id, route, rawtext, oktext)
 {
