@@ -25,11 +25,13 @@ function post_id(id, route, rawtext, oktext)
 	  {
 	  	$(".alert").html(data.errmsg);
 	  	$(".alert").show();
+        $(".notice").hide();
 	  }
 	  else
 	  {
 	  	$(".notice").html(data.notice);
 	  	$(".notice").show();
+        $(".alert").hide();
 	  	$cid = $("#"+route+"_"+id);
 	  	if($cid[0].innerHTML == rawtext)
 	  	{
