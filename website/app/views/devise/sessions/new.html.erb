@@ -1,4 +1,4 @@
-<h2>Sign in</h2>
+<h2>登录</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div>用户名或者邮箱<br />
@@ -8,7 +8,7 @@
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
-    <div>记住我 <%= f.label :remember_me %></div>
+    <div><%= f.check_box :remember_me %> 记住我</div>
   <% end -%>
 
   <div><%= f.submit "登录" %></div>

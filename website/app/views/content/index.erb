@@ -168,4 +168,32 @@ end
       </div>
   </div>
   <% end %>
+
+  <% if current_user && @favorites %>
+
+      <div class="mod" id="hot_artical" alog-group="log-hotartical">
+        <div class="hd"><h3>我的收藏<span>FAVORITE</span></h3></div>
+        <div class="bd">
+          <ul class="artical-top">
+            <% @favorites.each {|f|
+                c = f.content
+            %>
+                <li class="first-item clearfix" style="padding-top:13px;padding-bottom:10px;">
+                <span>
+                    <a href="/content/<%=c.id%>" target="_blank">
+                      <img src="<%=c.cover%>" style="height: 78px; width: 120px;">
+                    </a>
+                </span>
+                  <p style="margin-left:132px;">
+                    <a href="/content/<%=c.id%>" style="font-weight:normal;letter-spacing: 0.2px;color:#333;"><%=c.title%></a>
+                  </p>
+
+                </li>
+            <% } %>
+            <li><a href="/myfavorite"> >>>查看更多收藏<<< </a></li>
+          </ul>
+
+        </div>
+      </div>
+  <% end %>
 </div>

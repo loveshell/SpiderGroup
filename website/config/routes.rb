@@ -31,6 +31,7 @@ Website::Application.routes.draw do
 
   post 'publish' => 'content#publish'
   post 'favorite' => 'content#favorite'
+  get 'myfavorite' => 'content#myfavorite'
   post 'like' => 'content#like'
   get 'favoritelogin/:id' => 'content#favoritelogin'
   get 'likelogin/:id' => 'content#likelogin'

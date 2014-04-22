@@ -67,7 +67,16 @@ private
 			cats[k] = tag_values if tag_values.size>0
 		}
 		cats
-	end
+  end
+
+  def process_contents(contents)
+    contents.each { |c|
+      c.cat = get_category(c.title, c.description)
+      c.favorite = is_favorite(c.id) if current_user
+      c.like = is_like(c.id) if current_user
+    }
+    contents
+  end
 
 	def get_contents(sql=nil)
 		contents = []
@@ -75,13 +84,8 @@ private
 			contents = Content.where(sql).paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC') 
 		else
 			contents = Content.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
-		end 
-		contents.each { |c|
-			c.cat = get_category(c.title, c.description)
-      c.favorite = is_favorite(c.id) if current_user
-      c.like = is_like(c.id) if current_user
-		}
-		contents
+		end
+    process_contents(contents)
 	end
 	
 	def render_tag(tagname, if_or=true)
@@ -152,6 +156,7 @@ public
 
   def index
     @contents = get_contents(:published => true)
+    @favorites = Favorite.where(user_id: current_user.id) if current_user
   end
 
   def all
@@ -342,6 +347,15 @@ public
         end
       end
     }
+  end
+
+  def myfavorite
+    @title = "我收藏的内容"
+    @contents = Content.joins(:comments).select('distinct contents.*').where('comments.user_id' => current_user.id).paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
+    @contents = process_contents(@contents)
+    #require 'pp'
+    #pp @contents
+    render 'index'
   end
 
   def favorite
