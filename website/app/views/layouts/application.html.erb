@@ -9,13 +9,20 @@
 <body>
 <div id="header" alog-group="log-header">
   <div class="header-content">
-    <div id="menu"><a href="/">精选</a><a href="/submit">投稿</a></div>
+    <div id="menu"><a href="/">精选</a>
+      <% if can? :manage, :Content %>
+          <a href="/submit">投稿</a>
+      <% end %>
+    </div>
     <div id="usrbar">
       <!--<a href="/bigbrother">互联网大企业</a>|<a href="/people">人物</a>|<a href="/security">安全</a>|<a href="/code">编程</a>|<a href="/cool">创意</a>|<a href="/webmaster">站长</a>|<a href="/newbie">杂七杂八</a>-->
       <%
         if user_signed_in?
+           if can? :manage, :Content
       %>
-      <a href="/check">审核</a>|<a href="/all">所有文章</a>|<%= link_to "退出登录", destroy_user_session_path, :method => :delete %><%= link_to current_user.login, edit_user_registration_path %></font>
+      <a href="/check">审核</a>|<a href="/all">所有文章</a>|
+        <% end% %>
+      <%= link_to "退出登录", destroy_user_session_path, :method => :delete %><%= link_to current_user.login, edit_user_registration_path %></font>
     <%
         else
       %>
