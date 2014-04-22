@@ -58,3 +58,4 @@ gem 'paperclip'
 gem 'nokogiri'
 gem 'guess_html_encoding'
 gem "sixarm_ruby_magic_number_type"
+gem 'acts_as_commentable'

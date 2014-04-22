@@ -7,7 +7,21 @@ content_for :title do
    end
 end
 %>
-
+<% def relative_time(start_time)
+     diff_seconds = (Time.now - start_time).to_i
+     case diff_seconds
+       when 0 .. 59
+         "1分钟之内"
+       when 60 .. (3600-1)
+         "#{diff_seconds/60}分钟前"
+       when 3600 .. (3600*24-1)
+         "#{diff_seconds/3600}小时前"
+       when (3600*24) .. (3600*24*30)
+         "#{diff_seconds/(3600*24)}天前"
+       else
+         start_time.strftime("%Y-%m-%d")
+     end
+   end %>
   <div class="l-main-col">
 
 
@@ -28,7 +42,8 @@ end
                     <% end %>
                     <p class="feeds-item-text"><%=raw(c.description)%><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more">[详细]</a> </p>
                  <p class="feeds-item-info">
-                    <span><%=c.created_at%> </span>
+                    <span><%=relative_time(c.created_at)%> </span>
+                    <span><%= link_to "评论(#{c.comments.size})", content_path(c)+"#comments", {:target=>"_blank\"#{c.id}\""}%></span>
                     <!--<span>来源：<a href="/<%=c.source%>"><%=c.source%></a></span>-->
                     <!--
                     <% if c.cat 

@@ -23,6 +23,43 @@
  <div class="post">
  <%=raw(@content.content)%>
  </div>
+  <%= form_for(Comment.new) do |f| %>
+
+      <div style=" width:90%; margin: 0 auto; margin-top: 50px; border-top: 2px dashed #C4CDE0;">
+        <br><%= current_user.username if current_user %> 要不要说点什么？<br>
+
+          <%=f.text_area :comment, placeholder: "留个印记吧...", cols:80, rows:8%>
+          <%=f.hidden_field :commentable_type, :value => @content.class.to_s%>
+          <%=f.hidden_field :commentable_id, :value => @content.id%><br>
+          <%=f.submit "评论",  :class=>"pure-button pure-button-xsmall pure-button-primary" %>
+      </div>
+
+      <a name="comments"></a>
+    <% @comments.each{|c| %>
+    <% def relative_time(start_time)
+         diff_seconds = (Time.now - start_time).to_i
+         case diff_seconds
+           when 0 .. 59
+             "1分钟之内"
+           when 60 .. (3600-1)
+              "#{diff_seconds/60}分钟前"
+           when 3600 .. (3600*24-1)
+              "#{diff_seconds/3600}小时前"
+           when (3600*24) .. (3600*24*30)
+              "#{diff_seconds/(3600*24)}天前"
+           else
+              start_time.strftime("%Y-%m-%d")
+         end
+       end %>
+          <div style=" width:90%; margin: 0 auto; margin-top: 50px; border-top:  1px solid #e6eaed;">
+       <%= c.user.username if c.user %> • <%= relative_time(c.created_at)  %><%#time_ago_in_words(c.created_at)%> <br>
+       <%= c.comment %>
+          </div>
+    <% } %>
+
+
+  <% end %>
+
 </div>
 
 <script>

@@ -38,6 +38,7 @@ Website::Application.routes.draw do
   post 'submit' => 'content#create'
 
   resources :content
+  resources :comments
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

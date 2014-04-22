@@ -240,12 +240,18 @@ public
   end
 
   def create
+    if !authenticate_user!
+      render 'index'
+    end
+
     img_list = process_img_content(content_params[:content])
 
     @content = Content.new(content_params)
     if !@content[:cover] && img_list.size>0
       @content[:cover] = img_list[0][:to] #第一张图片作为封面
     end
+
+    @content[:userid] = current_user.id
 
     if @content.save
       redirect_to content_path(@content), notice: "The article has been successfully created."
@@ -259,6 +265,7 @@ public
     if !@content
       #error
     end
+    @comments = @content.comments.recent.all
   end
 
   def edit

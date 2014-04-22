@@ -22,8 +22,10 @@ module Website
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = false
+    config.i18n.available_locales = ["zh-CN", :de]
     config.i18n.default_locale = "zh-CN".to_sym
     config.time_zone = 'Beijing'
+
 
 
     config.action_mailer.raise_delivery_errors = true     #注意，在development.rb下需修改成true
