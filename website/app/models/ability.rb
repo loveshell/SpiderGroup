@@ -33,6 +33,7 @@ class Ability
         can :manage, :all
       else
         can [:show, :like, :favorite, :vote], :Content
+        can [:create], :Comment
       end
     else
       can [:show], :Content
