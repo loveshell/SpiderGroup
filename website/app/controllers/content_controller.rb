@@ -340,7 +340,7 @@ public
       if !error
         published = !@content.published
         if @content.update_attribute("published", published)
-          @content.update_attribute("publishtime", Time.now)
+          @content.update_attribute("publishtime", Time.now) if published
           info = "发布成功！"
           info = "取消"+info unless published
           render json: {err:0, notice:info}
