@@ -42,7 +42,7 @@ end
                     <% end %>
                     <p class="feeds-item-text"><%=raw(c.description)%><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more">[详细]</a> </p>
                  <p class="feeds-item-info">
-                    <span><%=relative_time(c.created_at)%> </span>
+                    <span><% if c.publishtime %> <%=relative_time(c.publishtime)%> <% else %> <%=relative_time(c.created_at)%> <% end %> </span>
                     <span><%= link_to "评论(#{c.comments.size})", content_path(c)+"#comments", {:target=>"_blank\"#{c.id}\""}%></span>
                     <!--<span>来源：<a href="/<%=c.source%>"><%=c.source%></a></span>-->
                     <!--
