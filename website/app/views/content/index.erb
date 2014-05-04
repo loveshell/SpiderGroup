@@ -30,7 +30,9 @@ end
       没有待审核的文章，休息一会再来吧。
       <%
       end
-        @contents.each {|c|%>
+        @contents.each {|c|
+          c = c.content  if c.class.to_s == "Favorite"
+          %>
           <div class="feeds-item">
           <h3><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><%=c.title%></a></h3>
           <div class="feeds-item-detail clearfix ">

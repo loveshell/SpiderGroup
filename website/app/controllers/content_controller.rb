@@ -71,6 +71,7 @@ private
 
   def process_contents(contents)
     contents.each { |c|
+      c = c.content  if c.class.to_s == "Favorite"
       c.cat = get_category(c.title, c.description)
       c.favorite = is_favorite(c.id) if current_user
       c.like = is_like(c.id) if current_user
@@ -353,8 +354,8 @@ public
 
   def myfavorite
     @title = "我收藏的内容"
-    @contents = Content.joins(:comments).select('distinct contents.*').where('comments.user_id' => current_user.id).paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
-    @contents = process_contents(@contents)
+    @contents = Favorite.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 10, :order => 'created_at desc') if current_user
+    process_contents(@contents)
     #require 'pp'
     #pp @contents
     render 'index'
