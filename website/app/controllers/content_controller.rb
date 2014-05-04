@@ -78,12 +78,13 @@ private
     contents
   end
 
-	def get_contents(sql=nil)
+	def get_contents(sql=nil, order=nil)
+    order ||= 'created_at DESC'
 		contents = []
 		if sql
-			contents = Content.where(sql).paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC') 
+			contents = Content.where(sql).paginate(:page => params[:page], :per_page => 10, :order => order) 
 		else
-			contents = Content.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
+			contents = Content.paginate(:page => params[:page], :per_page => 10, :order => order)
 		end
     process_contents(contents)
 	end
@@ -155,7 +156,7 @@ public
   end
 
   def index
-    @contents = get_contents(:published => true)
+    @contents = get_contents({:published => true}, 'publishtime DESC,created_at DESC')
     @favorites = Favorite.where(user_id: current_user.id) if current_user
   end
 
@@ -339,6 +340,7 @@ public
       if !error
         published = !@content.published
         if @content.update_attribute("published", published)
+          @content.update_attribute("publishtime", Time.now)
           info = "发布成功！"
           info = "取消"+info unless published
           render json: {err:0, notice:info}

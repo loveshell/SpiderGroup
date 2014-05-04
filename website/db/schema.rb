@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422015750) do
+ActiveRecord::Schema.define(version: 20140504061701) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140422015750) do
     t.string   "source"
     t.boolean  "published"
     t.integer  "userid"
+    t.datetime "publishtime"
   end
 
   add_index "contents", ["url"], name: "index_contents_on_url", unique: true
