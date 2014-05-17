@@ -66,10 +66,15 @@ module HttpModule
     return img_url if img_url.include? "qhimg.com"
     #http://webscan.360.cn/timgurl/url    post  参数名:url
     uri = URI.parse("http://webscan.360.cn/timgurl/url")
-    url = "http://proxy.fofa.so/image.php?ref=#{URI.encode(referer)}&img=#{URI.encode(img_url)}"
+    if referer
+      url = "http://proxy.fofa.so/image.php?ref=#{URI.encode(referer)}&img=#{URI.encode(img_url)}" 
+    else
+      url = img_url
+    end
     response = Net::HTTP.post_form(uri, 'url' => url)
     #puts url
     data = JSON.parse(response.body)
+    puts data
     if data['error'] && data['url']
       data['url']
     else
@@ -252,7 +257,11 @@ module HttpModule
     @options ||= {}
     img_src = URI.encode(img_src) unless img_src.include? '%' #如果包含百分号%，说明已经编码过了
     is_img_data = img_src.include? 'data:image/' #src 就是图片数据
-    u = URI.join(refer, img_src)
+    if refer
+      u = URI.join(refer, img_src)
+    else
+      u = URI(img_src)
+    end
     abs_img_url = u.to_s
     path = File.join(File.dirname(__FILE__), 'imgs')
     path = File.join(File.dirname(__FILE__), '../'+@options[:img_save_path]) if @options[:img_save_path]
@@ -356,8 +365,10 @@ module HttpModule
   #注意：原字符串会直接替换
   def process_img_content(str)
     #替换图片
+    referer = content_params[:url]
+    referer = nil if referer.size<5
     cdiv = Nokogiri::HTML(content_params[:content])
-    img_list = receive_imgs(cdiv, content_params[:url])
+    img_list = receive_imgs(cdiv, referer)
     str = content_params[:content]
     img_list.each{|r|
       while str.index(r[:from]) && (r[:from] != r[:to])

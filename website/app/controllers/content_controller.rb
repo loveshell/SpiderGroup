@@ -306,7 +306,11 @@ public
 
     img_list = process_img_content(content_params[:content])
 
+
     if @content.update(content_params)
+      if !@content[:cover] && img_list.size>0
+        @content.update_attribute("cover", img_list[0][:to]) #第一张图片作为封面
+      end
       redirect_to @content
     else
       render 'edit'
