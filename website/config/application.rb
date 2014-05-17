@@ -53,8 +53,9 @@ module Website
       }   
 =end
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-    config.assets.precompile += Ckeditor.assets
-    config.assets.precompile += %w(ckeditor/*)
+    #默认不加载ckeditor的js和css，只在需要的action里面自行加载
+    #config.assets.precompile += Ckeditor.assets
+    #config.assets.precompile += %w(ckeditor/*)
 
   end
 end

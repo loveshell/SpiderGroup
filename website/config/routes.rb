@@ -1,4 +1,6 @@
 Website::Application.routes.draw do
+  get "submit/edit"
+  get "submit/index"
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
