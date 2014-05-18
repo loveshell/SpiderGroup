@@ -71,16 +71,21 @@ module HttpModule
     else
       url = img_url
     end
-    response = Net::HTTP.post_form(uri, 'url' => url)
-    #puts url
-    data = JSON.parse(response.body)
-    puts data
-    if data['error'] && data['url']
-      data['url']
-    else
+    begin
+      response = Net::HTTP.post_form(uri, 'url' => url)
+      #puts url
+      data = JSON.parse(response.body)
       #puts data
-      nil
+      if data['error'] && data['url']
+        data['url']
+      else
+        #puts data
+        nil
+      end
+    rescue => e
+      @logger.error "post_img_url_to_webscan error of #{img_url} from #{referer}" if @logger
     end
+
   end
 
   def get_web_content(url,ops=nil)
@@ -193,8 +198,8 @@ module HttpModule
     c
   end
 
-  def get_http(url)
-    http = get_web_content url
+  def get_http(url, refer=nil)
+    http = get_web_content url, referer: refer
     http[:utf8html] = get_utf8 http[:html] if http[:html] and http[:html].size > 2
     #puts http[:utf8html]
     http
@@ -216,7 +221,7 @@ module HttpModule
   end
 
 
-  def load_info(url)
+  def load_info(url, referer=nil)
     @options ||= {}
     http_info = nil
     url = 'http://'+url+'/' if !url.include?('http://') and !url.include?('https://')
@@ -245,7 +250,7 @@ module HttpModule
 
     #不存在或者时间超时，则重新获取信息
     if !http_info
-      http_info = get_http(url)
+      http_info = get_http(url, referer)
       if !http_info[:error]
         dump_obj_to_file path, http_info
       end

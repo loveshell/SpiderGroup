@@ -162,9 +162,15 @@ public
   end
 
   def all
-  	@contents = get_contents()
-    @title = "所有"
+  	@contents = get_contents("source is null")
+    @title = "所有文章"
     render(:action => 'index')    
+  end
+
+  def allspide
+    @contents = get_contents("source is not null")
+    @title = "自动抓取的文章"
+    render(:action => 'index')
   end
 
   def bigbrother

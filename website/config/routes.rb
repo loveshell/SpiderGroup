@@ -10,6 +10,7 @@ Website::Application.routes.draw do
   root 'content#index'
   get 'check' => 'content#check'
   get 'all' => 'content#all'
+  get 'allspide' => 'content#allspide'
   get 'bigbrother' => 'content#bigbrother'
   get 'newbie' => 'content#newbie'
   get 'people' => 'content#people'
