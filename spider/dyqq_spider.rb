@@ -19,7 +19,7 @@ class DyqqSpider < BaseSpider
     @category = "亲子 儿童 家庭"
     #@list_url = "http://dyapi.inews.qq.com/getSubWebAllNews?id=0&count=100&group=1&t=1400416617623"
     @url = ''
-    @replaces = []
+    @replaces = [{type:'string_replace', from:'" width="100%" style="display:block;">', to:'">', repead:true}]
     @lastid = 0
   end
 
@@ -56,7 +56,7 @@ class DyqqSpider < BaseSpider
               end
               content_list << {:source=>@name, :title=>n["title"], :url=>n["url"],
                                :description=>n["abstract"], :cover=>cover,
-                               :created_at=>n["timestamp"], :author=>n["chlname"]}
+                               :created_at=>Time.at(n["timestamp"].to_i), :author=>n["chlname"]}
             end
           }
         }
