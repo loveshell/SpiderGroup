@@ -1,0 +1,106 @@
+<%
+content_for :title do
+   if @title
+     @title
+   else
+%>首页<%
+   end
+end
+%>
+<% def relative_time(start_time)
+     diff_seconds = (Time.now - start_time).to_i
+     case diff_seconds
+       when 0 .. 59
+         "1分钟之内"
+       when 60 .. (3600-1)
+         "#{diff_seconds/60}分钟前"
+       when 3600 .. (3600*24-1)
+         "#{diff_seconds/3600}小时前"
+       when (3600*24) .. (3600*24*30)
+         "#{diff_seconds/(3600*24)}天前"
+       else
+         start_time.strftime("%Y-%m-%d")
+     end
+   end %>
+
+
+    <div id="home">
+      <% if @vote && @contents.size<1 %>
+      没有待审核的文章，休息一会再来吧。
+      <%
+      end
+        @contents.each {|c|
+          c = c.content  if c.class.to_s == "Favorite"
+          %>
+          <div class="feeds-item">
+          <h3><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><%=c.title%></a></h3>
+          <div class="feeds-item-detail clearfix ">
+                    <% if c.cover
+                       cover = c.cover
+                       cover = "/"+cover unless cover[0] == '/' || cover.include?('http://')
+                    %>
+           <p class="feeds-item-pic"><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more"><img src="<%=cover%>"></a></p>
+                    <% end %>
+                    <p class="feeds-item-text"><%=raw(c.description)%><a href="/content/<%=c.id%>" target="_blank\"<%=c.id%>\"" class="feeds-item-more">[详细]</a> </p>
+                 <p class="feeds-item-info">
+                    <span><% if c.publishtime %> <%=relative_time(c.publishtime)%> <% else %> <%=relative_time(c.created_at)%> <% end %> </span>
+                    <span><%= link_to "评论(#{c.comments.size})", content_path(c)+"#comments", {:target=>"_blank\"#{c.id}\""}%></span>
+                    <!--<span>来源：<a href="/<%=c.source%>"><%=c.source%></a></span>-->
+                    <!--
+                    <% if c.cat 
+                      c.cat.each_key {|category| %>
+                    <a href="/<%=category%>"><%=category%></a>
+                    <% } 
+                    end%>
+                    -->
+                    <% if current_user %>
+                       <% if can? :manage, :Content %>
+                        <%= link_to "编辑", edit_content_path(c) %>|
+                        <% if c.published %>
+                          <%= link_to "取消发布", 'javascript:publish('+c.id.to_s+')', id:"publish_#{c.id}"%>
+                        <% else %>
+                        <%= link_to "发布", 'javascript:publish('+c.id.to_s+')', id:"publish_#{c.id}" %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                 </p>   
+                 <% if @vote %>
+                 <p class="feeds-item-info">
+                    <a href="/vote?content_id=<%=c.id%>&vote=2"><i class="grade-s  s5 "></i>太酷了</a> 
+                    <a href="/vote?content_id=<%=c.id%>&vote=1"><i class="grade-s  s3 "></i>有点意思</a> 
+                    <a href="/vote?content_id=<%=c.id%>&vote=-1"><i class="grade-s  s1 "></i>很无聊</a>
+                 </p>
+                <% end %>
+                 <p class="feeds-item-info">
+                  <!--
+                  <% if c.cat 
+                    c.cat.each {|category,keys| 
+                    keys.each{|k|%>
+                  <a href="/word/?w=<%=k%>"><%=k%></a>
+                  <% }} 
+                  end%>
+                  -->
+                  <% if can? :favorite, :Content %>
+                      <% if c.favorite %>
+                        <%= link_to "取消收藏", 'javascript:favorite('+c.id.to_s+')', id:"favorite_#{c.id}"%>
+                      <% else %>
+                      <%= link_to "收藏", 'javascript:favorite('+c.id.to_s+')', id:"favorite_#{c.id}" %>
+                      <% end %>
+                      <% if c.like %>
+                        <%= link_to "取消赞", 'javascript:like('+c.id.to_s+')', id:"like_#{c.id}"%>
+                      <% else %>
+                      <%= link_to "赞", 'javascript:like('+c.id.to_s+')', id:"like_#{c.id}" %>
+                      <% end %>
+                  <% else %>
+                       <%= link_to "收藏", '/favoritelogin/'+c.id.to_s %>
+                       <%= link_to "赞", '/likelogin/'+c.id.to_s %>
+                  <% end %>
+                 </p>
+             </div>
+           </div>
+      <% } %>
+    </div>
+    <!-- 分页链接 -->
+    <div class="pull-right pages">
+      <%=will_paginate(@contents, :prev_label=>'<', :next_label=>'>', :separator=>" | ") %>  
+    </div>

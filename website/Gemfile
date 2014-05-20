@@ -61,3 +61,5 @@ gem "sixarm_ruby_magic_number_type"
 gem 'acts_as_commentable'
 
 gem 'unicorn'
+
+gem 'mobylette'

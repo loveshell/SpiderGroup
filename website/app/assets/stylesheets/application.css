@@ -371,6 +371,7 @@ h3 {
 }
 
 #header,#body,#footer{width: 984px; margin: 0 auto;}
+#header_mobile,#body_mobile,#footer_mobile{width: 100%; margin: 0 auto;}
 
 #header {
     width: 100%;
@@ -446,6 +447,13 @@ h3 {
     margin-top: 20px;
     margin-bottom: 35px;
     width: 982px;
+    border: 1px solid #ebebeb;
+    background: #fefefe
+}
+#body_mobile {
+    margin-top: 20px;
+    margin-bottom: 35px;
+    width: 98%;
     border: 1px solid #ebebeb;
     background: #fefefe
 }

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Mobylette::RespondToMobileRequests
+
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   
