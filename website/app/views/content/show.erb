@@ -28,7 +28,7 @@
       <div style=" width:90%; margin: 0 auto; margin-top: 50px; border-top: 2px dashed #C4CDE0;">
         <br><%= current_user.username if current_user %> 要不要说点什么？<br>
 
-          <%=f.text_area :comment, placeholder: "留个印记吧...", cols:80, rows:8%>
+          <%=f.text_area :comment, placeholder: "留个印记吧...", cols:30, rows:5%>
           <%=f.hidden_field :commentable_type, :value => @content.class.to_s%>
           <%=f.hidden_field :commentable_id, :value => @content.id%><br>
           <%=f.submit "评论",  :class=>"pure-button pure-button-xsmall pure-button-primary" %>
@@ -63,6 +63,11 @@
 </div>
 
 <script>
+    var images = document.getElementsByTagName('img');
+    for(var i=0;i < images.length;i++){
+        images[i].style.cssText = 'max-width:100%;min-width:100px;'
+    }
+
 <%
 
 def mini_str(str)
