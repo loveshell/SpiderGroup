@@ -14,7 +14,9 @@ cachetime: 1800
 no_cache: false
 
 #数据库存储文件路径
-dbfile: ./website/db/content.s3db
+dbconf: ./website/config/database.yml
+env: production
+#env: development
 
 #none表示不存储，cloud表示云存储，local表示本地存储(这时img_save_path参数生效)
 img_save_mode: cloud
@@ -26,5 +28,5 @@ img_save_path: ./website/public/imgs
 log_level: 0
 
 #代理
-proxy: 139.210.98.86:8080
+#proxy: 139.210.98.86:8080
 

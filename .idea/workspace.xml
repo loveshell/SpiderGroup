@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8640fa06-1fb8-45d0-835d-3fa76fc3be8f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/SpiderGroup.iml" afterPath="$PROJECT_DIR$/.idea/SpiderGroup.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/website/app/views/layouts/application.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.yml" afterPath="$PROJECT_DIR$/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_manager.rb" afterPath="$PROJECT_DIR$/db_manager.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SpiderGroup.iws" />
@@ -17,15 +19,18 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SpiderGroup@huxiu_spider.coverage" NAME="huxiu_spider Coverage Results" MODIFIED="1396333742816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
     <SUITE FILE_PATH="coverage/SpiderGroup@iheima_spider.coverage" NAME="iheima_spider Coverage Results" MODIFIED="1396259082293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
+    <SUITE FILE_PATH="coverage/SpiderGroup@huxiu_spider.coverage" NAME="huxiu_spider Coverage Results" MODIFIED="1397468567242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
+    <SUITE FILE_PATH="coverage/SpiderGroup@Run_test__httpmodule_test___SpiderGroup.coverage" NAME="Run test 'httpmodule_test': SpiderGroup Coverage Results" MODIFIED="1400326873369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" MODULE_NAME="SpiderGroup" />
     <SUITE FILE_PATH="coverage/SpiderGroup@vaikan_spider.coverage" NAME="vaikan_spider Coverage Results" MODIFIED="1396241309316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
-    <SUITE FILE_PATH="coverage/SpiderGroup@kr36_spider.coverage" NAME="kr36_spider Coverage Results" MODIFIED="1396153015297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
+    <SUITE FILE_PATH="coverage/SpiderGroup@kr36_spider.coverage" NAME="kr36_spider Coverage Results" MODIFIED="1397535524842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
     <SUITE FILE_PATH="coverage/SpiderGroup@spidergroup.coverage" NAME="spidergroup Coverage Results" MODIFIED="1396246668236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpiderGroup" />
     <SUITE FILE_PATH="coverage/SpiderGroup@replaceparser.coverage" NAME="replaceparser Coverage Results" MODIFIED="1394528044209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpiderGroup" />
     <SUITE FILE_PATH="coverage/SpiderGroup@freebuf_spider.coverage" NAME="freebuf_spider Coverage Results" MODIFIED="1395039315123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpiderGroup" />
+    <SUITE FILE_PATH="coverage/SpiderGroup@xiangrikui_spider.coverage" NAME="xiangrikui_spider Coverage Results" MODIFIED="1397970457539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
+    <SUITE FILE_PATH="coverage/SpiderGroup@dyqq_spider.coverage" NAME="dyqq_spider Coverage Results" MODIFIED="1400569976650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
     <SUITE FILE_PATH="coverage/SpiderGroup@Run_test__FreebufTest___SpiderGroup.coverage" NAME="Run test 'FreebufTest': SpiderGroup Coverage Results" MODIFIED="1394979564100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" MODULE_NAME="SpiderGroup" />
-    <SUITE FILE_PATH="coverage/SpiderGroup@baijia_spider.coverage" NAME="baijia_spider Coverage Results" MODIFIED="1395039290474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
+    <SUITE FILE_PATH="coverage/SpiderGroup@baijia_spider.coverage" NAME="baijia_spider Coverage Results" MODIFIED="1397533229891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" MODULE_NAME="SpiderGroup" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -39,37 +44,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="httpmodule.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/httpmodule.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="207" column="0" selection-start="6503" selection-end="6503" vertical-scroll-proportion="0.33231708" vertical-offset="2996" max-vertical-offset="3585">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="content_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/app/controllers/content_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="13" selection-start="2043" selection-end="2043" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="2925">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="kr36_spider.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spider/kr36_spider.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="55" selection-start="1122" selection-end="1169" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1755">
+            <state line="21" column="13" selection-start="478" selection-end="478" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1950">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="huxiu_spider.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spider/huxiu_spider.rb">
+      <file leaf-file-name="baijia_spider.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spider/baijia_spider.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="85" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1770">
+            <state line="21" column="80" selection-start="685" selection-end="748" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1755">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lusongsong_spider.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spider/lusongsong_spider.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1845">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dyqq_spider.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spider/dyqq_spider.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="93" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="2010">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spidergroup.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spidergroup.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="112" column="64" selection-start="3186" selection-end="3186" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2100">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_manager.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db_manager.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="0" selection-start="1740" selection-end="1740" vertical-scroll-proportion="-4.5" vertical-offset="633" max-vertical-offset="915">
               <folding />
             </state>
           </provider>
@@ -78,55 +101,36 @@
       <file leaf-file-name="config.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="420">
+            <state line="11" column="0" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="570">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/app/views/content/index.erb">
+      <file leaf-file-name="application.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="76" selection-end="76" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="2010">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/app/views/content/view.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="46" selection-start="46" selection-end="46" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="210">
+            <state line="65" column="0" selection-start="2440" selection-end="2440" vertical-scroll-proportion="0.7887324" vertical-offset="751" max-vertical-offset="1065">
               <folding>
-                <marker date="1396320839000" expanded="true" signature="70:210" placeholder="..." />
-                <marker date="1396320839000" expanded="true" signature="167:203" placeholder="..." />
+                <element signature="n#style#0;n#p#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/app/views/layouts/application.html.erb">
+      <file leaf-file-name="httpmodule.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/app/models/httpmodule.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="46" selection-start="76" selection-end="76" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="525">
+            <state line="104" column="24" selection-start="2907" selection-end="2912" vertical-scroll-proportion="-3.6153846" vertical-offset="1466" max-vertical-offset="5880">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="iheima_spider.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spider/iheima_spider.rb">
+      <file leaf-file-name="base_spider.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/base_spider.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="2" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1770">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="freebuf_spider.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spider/freebuf_spider.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="77" selection-start="514" selection-end="574" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1605">
+            <state line="25" column="8" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="555">
               <folding />
             </state>
           </provider>
@@ -145,38 +149,64 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/results/replaceparser.rb" />
-        <option value="$PROJECT_DIR$/replaceparser.rb" />
-        <option value="$PROJECT_DIR$/base_spider.rb" />
-        <option value="$PROJECT_DIR$/httpmodule.rb" />
-        <option value="$PROJECT_DIR$/freebuf_spider.rb" />
-        <option value="$PROJECT_DIR$/db_manager.rb" />
-        <option value="$PROJECT_DIR$/lib/base_spider.rb" />
-        <option value="$PROJECT_DIR$/test/freebuf_test.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/Rakefile" />
-        <option value="$PROJECT_DIR$/spider/freebuf_spider.rb" />
-        <option value="$PROJECT_DIR$/lib/replaceparser.rb" />
-        <option value="$PROJECT_DIR$/spider/baijia_spider.rb" />
-        <option value="$PROJECT_DIR$/lib/config.yml" />
-        <option value="$PROJECT_DIR$/spider/vaikan_spider.rb" />
-        <option value="$PROJECT_DIR$/config.yml" />
-        <option value="$PROJECT_DIR$/spidergroup.rb" />
-        <option value="$PROJECT_DIR$/spider/iheima_spider.rb" />
+        <option value="$PROJECT_DIR$/website/app/views/devise/confirmations/new.html.erb" />
+        <option value="$PROJECT_DIR$/website/app/views/devise/mailer/reset_password_instructions.html.erb" />
+        <option value="$PROJECT_DIR$/website/app/views/devise/passwords/edit.html.erb" />
+        <option value="$PROJECT_DIR$/website/config/locales/devise.zh-CN.yml" />
+        <option value="$PROJECT_DIR$/spider/xiangrikui_spider.rb" />
+        <option value="$PROJECT_DIR$/spider/_sinablog_spider.rb" />
+        <option value="$PROJECT_DIR$/website/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/website/app/views/content/new.erb" />
+        <option value="$PROJECT_DIR$/website/app/views/content/edit.erb" />
+        <option value="$PROJECT_DIR$/website/app/helpers/content_helper.rb" />
         <option value="$PROJECT_DIR$/lib/httpmodule.rb" />
-        <option value="$PROJECT_DIR$/website/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/website/app/views/content/view.erb" />
+        <option value="$PROJECT_DIR$/lib/replaceparser.rb" />
+        <option value="$PROJECT_DIR$/spidergroup.rb" />
+        <option value="$PROJECT_DIR$/website/public/assets/ckeditor/config.js" />
+        <option value="$PROJECT_DIR$/website/Gemfile.lock" />
+        <option value="$PROJECT_DIR$/website/config/environments/development.rb" />
+        <option value="$PROJECT_DIR$/website/config/environments/production.rb" />
+        <option value="$PROJECT_DIR$/website/lib/tasks/ckeditor.rake" />
+        <option value="$PROJECT_DIR$/website/app/assets/javascripts/ckeditor/config.js" />
+        <option value="$PROJECT_DIR$/website/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/website/app/models/ckeditor/picture.rb" />
+        <option value="$PROJECT_DIR$/website/app/models/ckeditor/attachment_file.rb" />
+        <option value="$PROJECT_DIR$/website/app/models/content.rb" />
+        <option value="$PROJECT_DIR$/website/app/controllers/comment_controller.rb" />
+        <option value="$PROJECT_DIR$/website/config/application.rb" />
+        <option value="$PROJECT_DIR$/website/config/locales/zh-CN.yml" />
+        <option value="$PROJECT_DIR$/website/app/views/content/show.erb" />
+        <option value="$PROJECT_DIR$/website/app/controllers/comments_controller.rb" />
+        <option value="$PROJECT_DIR$/website/app/models/ability.rb" />
+        <option value="$PROJECT_DIR$/Rakefile" />
+        <option value="$PROJECT_DIR$/website/lib/tasks/server_operation.rb" />
+        <option value="$PROJECT_DIR$/website/Gemfile" />
+        <option value="$PROJECT_DIR$/website/lib/tasks/server_operation.rake" />
+        <option value="$PROJECT_DIR$/website/config/unicorn.rb" />
+        <option value="$PROJECT_DIR$/website/app/views/devise/shared/_links.erb" />
+        <option value="$PROJECT_DIR$/website/app/views/devise/registrations/new.html.erb" />
+        <option value="$PROJECT_DIR$/website/app/views/devise/sessions/new.html.erb" />
+        <option value="$PROJECT_DIR$/website/app/models/favorite.rb" />
         <option value="$PROJECT_DIR$/website/app/views/content/index.erb" />
+        <option value="$PROJECT_DIR$/tools/cool_article_test.rb" />
+        <option value="$PROJECT_DIR$/test/httpmodule_test.rb" />
         <option value="$PROJECT_DIR$/website/app/controllers/content_controller.rb" />
-        <option value="$PROJECT_DIR$/spider/kr36_spider.rb" />
-        <option value="$PROJECT_DIR$/spider/huxiu_spider.rb" />
+        <option value="$PROJECT_DIR$/website/config/routes.rb" />
+        <option value="$PROJECT_DIR$/lib/base_spider.rb" />
+        <option value="$PROJECT_DIR$/website/app/models/httpmodule.rb" />
+        <option value="$PROJECT_DIR$/spider/baijia_spider.rb" />
+        <option value="$PROJECT_DIR$/spider/dyqq_spider.rb" />
+        <option value="$PROJECT_DIR$/daemon_dyqq.sh" />
+        <option value="$PROJECT_DIR$/db_manager.rb" />
+        <option value="$PROJECT_DIR$/config.yml" />
+        <option value="$PROJECT_DIR$/website/app/views/layouts/application.html.erb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1280" />
-    <option name="height" value="669" />
+    <option name="height" value="652" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -185,7 +215,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -204,7 +234,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -251,7 +280,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -302,67 +331,10 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpiderGroup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpiderGroup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpiderGroup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpiderGroup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpiderGroup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpiderGroup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -379,16 +351,84 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/spider" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website/app/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/spider" />
     </key>
   </component>
-  <component name="RunManager" selected="Ruby.huxiu_spider">
-    <configuration default="false" name="Run test 'FreebufTest': SpiderGroup" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
+  <component name="RunManager" selected="Ruby.dyqq_spider">
+    <configuration default="false" name="huxiu_spider" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <module name="SpiderGroup" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/spider" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/spider/huxiu_spider.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="baijia_spider" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <module name="SpiderGroup" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/spider" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/spider/baijia_spider.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="xiangrikui_spider" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <module name="SpiderGroup" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/spider" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/spider/xiangrikui_spider.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Run test 'httpmodule_test': SpiderGroup" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="SpiderGroup" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -408,7 +448,7 @@
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/test/freebuf_test.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/test/httpmodule_test.rb" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -416,12 +456,10 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <RunnerSettings RunnerId="RubyDebugRunner" />
-      <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyDebugRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="kr36_spider" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+    <configuration default="false" name="dyqq_spider" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="SpiderGroup" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
       <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/spider" />
@@ -437,73 +475,7 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/spider/kr36_spider.rb" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
-      <RunnerSettings RunnerId="RubyDebugRunner" />
-      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="vaikan_spider" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
-      <module name="SpiderGroup" />
-      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/spider" />
-      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/spider/vaikan_spider.rb" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
-      <RunnerSettings RunnerId="RubyDebugRunner" />
-      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="iheima_spider" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
-      <module name="SpiderGroup" />
-      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/spider" />
-      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/spider/iheima_spider.rb" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
-      <RunnerSettings RunnerId="RubyDebugRunner" />
-      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="huxiu_spider" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
-      <module name="SpiderGroup" />
-      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/spider" />
-      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/spider/huxiu_spider.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/spider/dyqq_spider.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <RunnerSettings RunnerId="RubyDebugRunner" />
       <ConfigurationWrapper RunnerId="RubyDebugRunner" />
@@ -592,19 +564,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Ruby.spidergroup" />
-      <item index="1" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'FreebufTest': SpiderGroup" />
-      <item index="2" class="java.lang.String" itemvalue="Ruby.kr36_spider" />
-      <item index="3" class="java.lang.String" itemvalue="Ruby.vaikan_spider" />
-      <item index="4" class="java.lang.String" itemvalue="Ruby.iheima_spider" />
-      <item index="5" class="java.lang.String" itemvalue="Ruby.huxiu_spider" />
+      <item index="1" class="java.lang.String" itemvalue="Ruby.huxiu_spider" />
+      <item index="2" class="java.lang.String" itemvalue="Ruby.baijia_spider" />
+      <item index="3" class="java.lang.String" itemvalue="Ruby.xiangrikui_spider" />
+      <item index="4" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'httpmodule_test': SpiderGroup" />
+      <item index="5" class="java.lang.String" itemvalue="Ruby.dyqq_spider" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Ruby.huxiu_spider" />
-        <item index="1" class="java.lang.String" itemvalue="Ruby.iheima_spider" />
-        <item index="2" class="java.lang.String" itemvalue="Ruby.vaikan_spider" />
-        <item index="3" class="java.lang.String" itemvalue="Ruby.kr36_spider" />
-        <item index="4" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'FreebufTest': SpiderGroup" />
+        <item index="0" class="java.lang.String" itemvalue="Ruby.dyqq_spider" />
+        <item index="1" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'httpmodule_test': SpiderGroup" />
+        <item index="2" class="java.lang.String" itemvalue="Ruby.xiangrikui_spider" />
+        <item index="3" class="java.lang.String" itemvalue="Ruby.baijia_spider" />
+        <item index="4" class="java.lang.String" itemvalue="Ruby.huxiu_spider" />
       </list>
     </recent_temporary>
   </component>
@@ -618,25 +590,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="669" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1280" height="652" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21001616" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34660032" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3651877" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272727" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282313" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33925685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272727" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -644,23 +616,23 @@
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25870648" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35544217" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21001616" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33360258" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272727" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272727" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -684,311 +656,349 @@
           <line>37</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/spider/huxiu_spider.rb</url>
+          <line>72</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/spider/kr36_spider.rb</url>
+          <line>116</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="37" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="60" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spidergroup.rb">
+    <entry file="file://$PROJECT_DIR$/website/db/migrate/20140422012254_add_userid_to_contents.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="11" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1605">
+        <state line="2" column="43" selection-start="108" selection-end="108" vertical-scroll-proportion="0.09146342" vertical-offset="0" max-vertical-offset="328" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/models/ckeditor/picture.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="44" selection-start="557" selection-end="557" vertical-scroll-proportion="0.41158536" vertical-offset="0" max-vertical-offset="328" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/views/content/new.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="6" selection-start="116" selection-end="116" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="285" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/config/locales/zh-CN.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="19" selection-start="1608" selection-end="1608" vertical-scroll-proportion="-4.269231" vertical-offset="1404" max-vertical-offset="3225" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/config/application.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="50" selection-start="1093" selection-end="1093" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="990">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/baijia_spider.rb">
+    <entry file="file://$PROJECT_DIR$/website/app/controllers/comments_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="2201" selection-end="2201" vertical-scroll-proportion="0.0" vertical-offset="1005" max-vertical-offset="1635" />
+        <state line="14" column="38" selection-start="462" selection-end="467" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.yml">
+    <entry file="file://$PROJECT_DIR$/website/app/views/content/show.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="15" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="195">
-          <folding />
-        </state>
+        <state line="45" column="35" selection-start="1780" selection-end="1780" vertical-scroll-proportion="-2.5" vertical-offset="615" max-vertical-offset="1425" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/httpmodule.rb">
+    <entry file="file://$PROJECT_DIR$/website/app/models/ability.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="0" selection-start="4513" selection-end="4513" vertical-scroll-proportion="0.0" vertical-offset="1991" max-vertical-offset="3120">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/replaceparser.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="37" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0" vertical-offset="371" max-vertical-offset="885" />
+        <state line="35" column="8" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="720" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Rakefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="3" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="255">
+        <state line="9" column="5" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/freebuf_spider.rb">
+    <entry file="file://$PROJECT_DIR$/website/lib/tasks/ckeditor.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="44" selection-start="1989" selection-end="1989" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="1545">
+        <state line="0" column="0" selection-start="0" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/Rakefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="12" selection-start="1437" selection-end="1444" vertical-scroll-proportion="-17.076923" vertical-offset="486" max-vertical-offset="1020" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/config/unicorn.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="26" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/lib/tasks/server_operation.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="366" selection-end="366" vertical-scroll-proportion="20.76923" vertical-offset="675" max-vertical-offset="1590" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/views/devise/registrations/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/views/devise/shared/_links.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="44" selection-start="924" selection-end="924" vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="450" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/views/devise/registrations/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="513" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/views/devise/sessions/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="35" selection-start="428" selection-end="428" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="345" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/models/content.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/models/ipvote.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="537">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spidergroup.rb">
+    <entry file="file://$PROJECT_DIR$/website/app/models/like.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="33" selection-start="832" selection-end="832" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="537">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/baijia_spider.rb">
+    <entry file="file://$PROJECT_DIR$/website/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="94" selection-start="1225" selection-end="1225" vertical-scroll-proportion="0.0" vertical-offset="298" max-vertical-offset="1485" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/nokogiri-1.6.0/lib/nokogiri/xml/node_set.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="20" selection-start="6654" selection-end="6664" vertical-scroll-proportion="0.0" vertical-offset="3526" max-vertical-offset="5415" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/freebuf_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="23" selection-start="1201" selection-end="1201" vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="795" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_manager.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="600" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/freebuf_spider.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="54" selection-start="1783" selection-end="1783" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1440">
+        <state line="7" column="34" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0" vertical-offset="46" max-vertical-offset="570">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spidergroup.rb">
+    <entry file="file://$PROJECT_DIR$/website/app/models/role.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="42" selection-start="2248" selection-end="2248" vertical-scroll-proportion="0.0" vertical-offset="1395" max-vertical-offset="1515">
+        <state line="1" column="61" selection-start="34" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/baijia_spider.rb">
+    <entry file="file://$PROJECT_DIR$/website/app/models/comment.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="59" selection-start="1760" selection-end="1770" vertical-scroll-proportion="0.0" vertical-offset="618" max-vertical-offset="1470" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/nokogiri-1.6.0/lib/nokogiri/xml/node_set.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="20" selection-start="6654" selection-end="6664" vertical-scroll-proportion="0.0" vertical-offset="3526" max-vertical-offset="5415" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/freebuf_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="23" selection-start="1201" selection-end="1201" vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="795" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_manager.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="600" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/test/unit/assertions.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="248" column="9" selection-start="8467" selection-end="8467" vertical-scroll-proportion="0.0" vertical-offset="3627" max-vertical-offset="6135" />
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs21/file.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="737" column="17" selection-start="32702" selection-end="32708" vertical-scroll-proportion="-5.1153846" vertical-offset="10922" max-vertical-offset="22335" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/connection_adapters/abstract/schema_statements.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="519" column="10" selection-start="19396" selection-end="19396" vertical-scroll-proportion="0.0" vertical-offset="7533" max-vertical-offset="13320" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/querying.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="19" selection-start="7" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.3/lib/active_record/persistence.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="10" selection-start="1338" selection-end="1338" vertical-scroll-proportion="-7.230769" vertical-offset="277" max-vertical-offset="7890" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/logger.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="459" column="11" selection-start="13514" selection-end="13519" vertical-scroll-proportion="-18.961538" vertical-offset="6392" max-vertical-offset="12750" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_manager.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/optparse.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1310" column="6" selection-start="36111" selection-end="36111" vertical-scroll-proportion="0.0" vertical-offset="21261" max-vertical-offset="29430" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/nokogiri-1.6.0/lib/nokogiri/xml/node_set.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="20" selection-start="6654" selection-end="6664" vertical-scroll-proportion="0.0" vertical-offset="3526" max-vertical-offset="5415" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/test/unit.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="875" column="26" selection-start="24454" selection-end="24454" vertical-scroll-proportion="0.0" vertical-offset="10210" max-vertical-offset="13230" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile.lock">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="12" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+        <state line="4" column="47" selection-start="76" selection-end="121" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/freebuf_test.rb">
+    <entry file="file://$PROJECT_DIR$/website/app/models/favorite.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="5" selection-start="1419" selection-end="1419" vertical-scroll-proportion="0.69741696" vertical-offset="441" max-vertical-offset="855" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/baijia_spider.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="1665" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/replaceparser.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="37" selection-start="859" selection-end="859" vertical-scroll-proportion="0.0" vertical-offset="401" max-vertical-offset="1020" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Rakefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/bin/rake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/net/http.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="854" column="0" selection-start="27404" selection-end="27404" vertical-scroll-proportion="-0.3312102" vertical-offset="12914" max-vertical-offset="23430">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/nokogiri-1.6.0/lib/nokogiri/xml/node.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="0" selection-start="7080" selection-end="7080" vertical-scroll-proportion="0.17889088" vertical-offset="2975" max-vertical-offset="14445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/ruby-debug-ide-0.4.22/lib/ruby-debug-ide.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="2138" selection-end="2138" vertical-scroll-proportion="0.17889088" vertical-offset="1220" max-vertical-offset="2220">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/vaikan_spider.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="300" selection-end="300" vertical-scroll-proportion="0.29516995" vertical-offset="0" max-vertical-offset="1665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spidergroup.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="2400" selection-end="2400" vertical-scroll-proportion="0.21675774" vertical-offset="1201" max-vertical-offset="1965">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="46" selection-start="76" selection-end="76" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="525">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/app/views/content/view.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="46" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
+        <state line="2" column="33" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
           <folding>
-            <marker date="1396320839000" expanded="true" signature="70:210" placeholder="..." />
-            <marker date="1396320839000" expanded="true" signature="167:203" placeholder="..." />
+            <marker date="1398165997000" expanded="true" signature="-1:-1" placeholder=" ... end" />
+            <marker date="1398165997000" expanded="true" signature="-1:-1" placeholder=" ... end" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/app/views/content/index.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="76" selection-end="76" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="2010">
+        <state line="193" column="52" selection-start="7425" selection-end="7425" vertical-scroll-proportion="0.0" vertical-offset="2511" max-vertical-offset="3090">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/cool_article_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="3" selection-start="1018" selection-end="1018" vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="675">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/freebuf_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="11" selection-start="0" selection-end="1707" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/minitest/unit.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="948" column="0" selection-start="24387" selection-end="24387" vertical-scroll-proportion="0.0" vertical-offset="14112" max-vertical-offset="21420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/test/unit.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="762" column="19" selection-start="21850" selection-end="21850" vertical-scroll-proportion="0.0" vertical-offset="11161" max-vertical-offset="13230">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/httpmodule_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="3" selection-start="768" selection-end="768" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/app/controllers/content_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="2043" selection-end="2043" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="2925">
+        <state line="167" column="5" selection-start="5889" selection-end="5889" vertical-scroll-proportion="-7.423077" vertical-offset="2312" max-vertical-offset="6840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1515">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spider/freebuf_spider.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="77" selection-start="514" selection-end="574" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1605">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/iheima_spider.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="2" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1770">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/kr36_spider.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="55" selection-start="1122" selection-end="1169" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1755">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1605">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spider/huxiu_spider.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="85" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1770">
+        <state line="8" column="23" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1830">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/xiangrikui_spider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="8" selection-start="860" selection-end="860" vertical-scroll-proportion="0.0" vertical-offset="304" max-vertical-offset="630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/vaikan_spider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/_sinablog_spider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="18" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" vertical-offset="1157" max-vertical-offset="1530">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/iheima_spider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1770">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/lusongsong_spider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1845">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/kr36_spider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="13" selection-start="478" selection-end="478" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1950">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/baijia_spider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="80" selection-start="685" selection-end="748" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1755">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daemon_dyqq.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="21" selection-start="227" selection-end="227" vertical-scroll-proportion="0.8108108" vertical-offset="0" max-vertical-offset="330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/dyqq_spider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="93" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="2010">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spidergroup.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="64" selection-start="3186" selection-end="3186" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2100">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/config/database.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="9" selection-start="135" selection-end="142" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/models/httpmodule.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="24" selection-start="2907" selection-end="2912" vertical-scroll-proportion="-3.6153846" vertical-offset="1466" max-vertical-offset="5880">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/base_spider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="8" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0" vertical-offset="256" max-vertical-offset="555">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_manager.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="0" selection-start="1740" selection-end="1740" vertical-scroll-proportion="-4.5" vertical-offset="633" max-vertical-offset="915">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="420">
+        <state line="11" column="0" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="570">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/httpmodule.rb">
+    <entry file="file://$PROJECT_DIR$/website/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="207" column="0" selection-start="6503" selection-end="6503" vertical-scroll-proportion="0.33231708" vertical-offset="2996" max-vertical-offset="3585">
-          <folding />
+        <state line="65" column="0" selection-start="2440" selection-end="2440" vertical-scroll-proportion="0.7887324" vertical-offset="751" max-vertical-offset="1065">
+          <folding>
+            <element signature="n#style#0;n#p#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
