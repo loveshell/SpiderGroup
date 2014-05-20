@@ -63,11 +63,19 @@
 </div>
 
 <script>
+  <% if is_mobile_request? %>
     var images = document.getElementsByTagName('img');
     for(var i=0;i < images.length;i++){
         images[i].style.cssText = 'max-width:100%;min-width:100px;'
     }
-
+    var w = window,
+            d = document,
+            e = d.documentElement,
+            g = d.getElementsByTagName('body')[0],
+            x = w.innerWidth || e.clientWidth || g.clientWidth,
+            y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+    alert(x+'×'+y);
+  <% end %>
 <%
 
 def mini_str(str)

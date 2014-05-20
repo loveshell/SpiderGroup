@@ -354,7 +354,7 @@ a:visited {
 
 .feeds-item .feeds-item-more {
     color: #369;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     font-size: 12px
 }
 
