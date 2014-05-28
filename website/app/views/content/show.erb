@@ -70,9 +70,12 @@
               e = d.documentElement,
               g = d.getElementsByTagName('body')[0],
               x = w.innerWidth || e.clientWidth || g.clientWidth,
-              y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+              y = w.innerHeight|| e.clientHeight|| g.clientHeight,
+              p = d.getElementById('page');
       //alert(x+'×'+y);
-      
+      alert(d.getElementsByTagName('body')[0].clientWidth);
+      alert(p.clientWidth);
+
 
     var images = document.getElementsByTagName('img');
     for(var i=0;i < images.length;i++){
