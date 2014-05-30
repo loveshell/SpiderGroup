@@ -634,6 +634,12 @@ h3 {
 }
 
 .pages {padding:20px 0 10px;}
+
+.pages span.previous_page,
+.pages a.previous_page,
+.pages span.next_page,
+.pages a.next_page{width:50px;}
+
 .pages span,
 .pages b,
 .pages em,
